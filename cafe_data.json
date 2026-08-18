@@ -1,0 +1,824 @@
+{
+  "products": [
+    {
+      "id": "p1",
+      "name": "Velvet Gold Espresso",
+      "category": "Coffee",
+      "price": 4.5,
+      "description": "Double shot of single-origin Ethiopian Yirgacheffe espresso with notes of jasmine, bergamot, and golden honey.",
+      "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=600&q=80",
+      "ingredients": [
+        "Single-origin Arabica Coffee Beans",
+        "Filtered Water"
+      ],
+      "calories": 10,
+      "isVegetarian": true,
+      "isVegan": true,
+      "spiceLevel": 0,
+      "allergens": [],
+      "rating": 4.9,
+      "reviewsCount": 84,
+      "isBestseller": true,
+      "isNew": false,
+      "isFeatured": true,
+      "stock": 100
+    },
+    {
+      "id": "p2",
+      "name": "Artisanal Rosa Cappuccino",
+      "category": "Coffee",
+      "price": 5.8,
+      "description": "Rich espresso layered with velvety steamed milk foam, dusted with organic Ceylon cinnamon and dark cocoa.",
+      "image": "https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=600&q=80",
+      "ingredients": [
+        "Espresso",
+        "Organic Whole Milk",
+        "Dark Cocoa",
+        "Cinnamon"
+      ],
+      "calories": 140,
+      "isVegetarian": true,
+      "isVegan": false,
+      "spiceLevel": 0,
+      "allergens": [
+        "Dairy"
+      ],
+      "rating": 4.8,
+      "reviewsCount": 112,
+      "isBestseller": true,
+      "isNew": false,
+      "isFeatured": true,
+      "stock": 80
+    },
+    {
+      "id": "p3",
+      "name": "Smoky Vanilla Iced Brew",
+      "category": "Coffee",
+      "price": 6.2,
+      "description": "24-hour steep cold brew infused with Madagascar vanilla bean syrup and oat milk over hand-carved ice.",
+      "image": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80",
+      "ingredients": [
+        "Cold Brew Coffee",
+        "Madagascar Vanilla Syrup",
+        "Oat Milk",
+        "Ice"
+      ],
+      "calories": 110,
+      "isVegetarian": true,
+      "isVegan": true,
+      "spiceLevel": 0,
+      "allergens": [],
+      "rating": 4.9,
+      "reviewsCount": 95,
+      "isBestseller": false,
+      "isNew": true,
+      "isFeatured": true,
+      "stock": 90
+    },
+    {
+      "id": "p4",
+      "name": "Kyoto Matcha Silk Latte",
+      "category": "Tea",
+      "price": 6.5,
+      "description": "Ceremonial grade Uji matcha whisked to perfection with steamed almond milk and raw agave nectar.",
+      "image": "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=600&q=80",
+      "ingredients": [
+        "Uji Ceremonial Matcha",
+        "Almond Milk",
+        "Raw Agave Nectar"
+      ],
+      "calories": 120,
+      "isVegetarian": true,
+      "isVegan": true,
+      "spiceLevel": 0,
+      "allergens": [
+        "Tree Nuts"
+      ],
+      "rating": 4.7,
+      "reviewsCount": 67,
+      "isBestseller": true,
+      "isNew": false,
+      "isFeatured": false,
+      "stock": 70
+    },
+    {
+      "id": "p5",
+      "name": "Golden Turmeric Elixir",
+      "category": "Cold Drinks",
+      "price": 5.9,
+      "description": "Cold-pressed organic turmeric, ginger root, Meyer lemon juice, sparkling tonic, and a touch of wild honey.",
+      "image": "https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=600&q=80",
+      "ingredients": [
+        "Turmeric",
+        "Ginger",
+        "Lemon",
+        "Wild Honey",
+        "Sparkling Water"
+      ],
+      "calories": 75,
+      "isVegetarian": true,
+      "isVegan": false,
+      "spiceLevel": 1,
+      "allergens": [],
+      "rating": 4.6,
+      "reviewsCount": 42,
+      "isBestseller": false,
+      "isNew": true,
+      "isFeatured": false,
+      "stock": 60
+    },
+    {
+      "id": "p6",
+      "name": "Avocado & Truffle Tartine",
+      "category": "Breakfast",
+      "price": 14.5,
+      "description": "Sourdough toast topped with crushed Haas avocado, poached organic egg, white truffle oil, and Maldon sea salt flakes.",
+      "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80",
+      "ingredients": [
+        "Artisanal Sourdough",
+        "Haas Avocado",
+        "Organic Egg",
+        "White Truffle Oil",
+        "Maldon Salt"
+      ],
+      "calories": 380,
+      "isVegetarian": true,
+      "isVegan": false,
+      "spiceLevel": 0,
+      "allergens": [
+        "Gluten",
+        "Egg"
+      ],
+      "rating": 4.9,
+      "reviewsCount": 150,
+      "isBestseller": true,
+      "isNew": false,
+      "isFeatured": true,
+      "stock": 50
+    },
+    {
+      "id": "p7",
+      "name": "Tuscan Grilled Chicken Focaccia",
+      "category": "Sandwiches",
+      "price": 16,
+      "description": "Herb-marinated grilled chicken breast, sun-dried tomatoes, fresh mozzarella, and basil pesto on toasted focaccia.",
+      "image": "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80",
+      "ingredients": [
+        "Grilled Chicken",
+        "Rosemary Focaccia",
+        "Fresh Mozzarella",
+        "Sun-dried Tomatoes",
+        "Basil Pesto"
+      ],
+      "calories": 520,
+      "isVegetarian": false,
+      "isVegan": false,
+      "spiceLevel": 0,
+      "allergens": [
+        "Gluten",
+        "Dairy",
+        "Tree Nuts"
+      ],
+      "rating": 4.8,
+      "reviewsCount": 89,
+      "isBestseller": false,
+      "isNew": false,
+      "isFeatured": true,
+      "stock": 40
+    },
+    {
+      "id": "p8",
+      "name": "Wild Mushroom Saffron Rigatoni",
+      "category": "Pasta",
+      "price": 18.5,
+      "description": "Handmade bronze-cut rigatoni tossed with sautéed chanterelles, saffron parmesan cream, and fresh parsley.",
+      "image": "https://images.unsplash.com/photo-1621996346565-e3def6164286?auto=format&fit=crop&w=600&q=80",
+      "ingredients": [
+        "Rigatoni Pasta",
+        "Chanterelle Mushrooms",
+        "Saffron Cream",
+        "Aged Parmesan",
+        "Parsley"
+      ],
+      "calories": 610,
+      "isVegetarian": true,
+      "isVegan": false,
+      "spiceLevel": 0,
+      "allergens": [
+        "Gluten",
+        "Dairy"
+      ],
+      "rating": 4.9,
+      "reviewsCount": 104,
+      "isBestseller": true,
+      "isNew": false,
+      "isFeatured": true,
+      "stock": 35
+    },
+    {
+      "id": "p9",
+      "name": "Prosciutto & Fig Artisanal Pizza",
+      "category": "Pizza",
+      "price": 19,
+      "description": "Wood-fired stone crust topped with San Marzano tomatoes, gorgonzola, fresh figs, prosciutto di Parma, and arugula.",
+      "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+      "ingredients": [
+        "Wood-fired Crust",
+        "San Marzano Tomatoes",
+        "Gorgonzola",
+        "Prosciutto",
+        "Fresh Figs",
+        "Arugula"
+      ],
+      "calories": 740,
+      "isVegetarian": false,
+      "isVegan": false,
+      "spiceLevel": 0,
+      "allergens": [
+        "Gluten",
+        "Dairy"
+      ],
+      "rating": 4.8,
+      "reviewsCount": 78,
+      "isBestseller": false,
+      "isNew": true,
+      "isFeatured": true,
+      "stock": 30
+    },
+    {
+      "id": "p10",
+      "name": "Rosa Dark Chocolate Ganache Tart",
+      "category": "Desserts",
+      "price": 8.5,
+      "description": "72% Valrhona dark chocolate tart filled with salted hazelnut praline and garnished with edible gold leaf.",
+      "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80",
+      "ingredients": [
+        "72% Dark Chocolate",
+        "Hazelnut Praline",
+        "Sea Salt",
+        "Pastry Shell",
+        "Edible Gold Leaf"
+      ],
+      "calories": 410,
+      "isVegetarian": true,
+      "isVegan": false,
+      "spiceLevel": 0,
+      "allergens": [
+        "Gluten",
+        "Dairy",
+        "Tree Nuts"
+      ],
+      "rating": 5,
+      "reviewsCount": 130,
+      "isBestseller": true,
+      "isNew": false,
+      "isFeatured": true,
+      "stock": 45
+    },
+    {
+      "id": "p11",
+      "name": "Berry Botanical Acai Bowl",
+      "category": "Smoothies",
+      "price": 11.5,
+      "description": "Organic acai blend topped with fresh blueberries, sliced kiwi, chia seeds, roasted coconut chips, and almond butter.",
+      "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=600&q=80",
+      "ingredients": [
+        "Acai Puree",
+        "Blueberries",
+        "Kiwi",
+        "Chia Seeds",
+        "Coconut Chips",
+        "Almond Butter"
+      ],
+      "calories": 320,
+      "isVegetarian": true,
+      "isVegan": true,
+      "spiceLevel": 0,
+      "allergens": [
+        "Tree Nuts"
+      ],
+      "rating": 4.8,
+      "reviewsCount": 92,
+      "isBestseller": false,
+      "isNew": false,
+      "isFeatured": false,
+      "stock": 50
+    },
+    {
+      "id": "p12",
+      "name": "Rose & Pistachio Baklava Bite",
+      "category": "Snacks",
+      "price": 4,
+      "description": "Flaky phyllo pastry layers with crushed Sicilian pistachios, organic rosewater reduction, and wildflower honey.",
+      "image": "https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=600&q=80",
+      "ingredients": [
+        "Phyllo Dough",
+        "Pistachios",
+        "Rosewater Syrup",
+        "Butter",
+        "Honey"
+      ],
+      "calories": 180,
+      "isVegetarian": true,
+      "isVegan": false,
+      "spiceLevel": 0,
+      "allergens": [
+        "Gluten",
+        "Dairy",
+        "Tree Nuts"
+      ],
+      "rating": 4.7,
+      "reviewsCount": 54,
+      "isBestseller": false,
+      "isNew": true,
+      "isFeatured": false,
+      "stock": 80
+    }
+  ],
+  "categories": [
+    "Coffee",
+    "Tea",
+    "Cold Drinks",
+    "Smoothies",
+    "Breakfast",
+    "Sandwiches",
+    "Pasta",
+    "Pizza",
+    "Desserts",
+    "Snacks",
+    "Special Offers"
+  ],
+  "quizQuestions": [
+    {
+      "id": "q1",
+      "text": "How strong and bold do you like your coffee/drink?",
+      "options": [
+        {
+          "label": "Light & Smooth",
+          "points": {
+            "Sweet & Creamy": 3,
+            "Fresh & Fruity": 2
+          }
+        },
+        {
+          "label": "Balanced & Rounded",
+          "points": {
+            "Classic Coffee Lover": 3,
+            "Chocolate Lover": 2
+          }
+        },
+        {
+          "label": "Deep, Dark & Intense",
+          "points": {
+            "Bold & Rich": 4,
+            "Classic Coffee Lover": 2
+          }
+        },
+        {
+          "label": "I prefer tea or fruit elixirs",
+          "points": {
+            "Fresh & Fruity": 4,
+            "Adventurous Explorer": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "What sweetness level matches your mood?",
+      "options": [
+        {
+          "label": "Unsweetened / Zero Sugar",
+          "points": {
+            "Bold & Rich": 3,
+            "Classic Coffee Lover": 3
+          }
+        },
+        {
+          "label": "Subtle Touch of Honey/Agave",
+          "points": {
+            "Fresh & Fruity": 2,
+            "Adventurous Explorer": 3
+          }
+        },
+        {
+          "label": "Rich & Sweet Syrup Notes",
+          "points": {
+            "Sweet & Creamy": 4,
+            "Chocolate Lover": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "Which flavor notes intrigue your palate most?",
+      "options": [
+        {
+          "label": "Madagascar Vanilla & Sweet Cream",
+          "points": {
+            "Sweet & Creamy": 4
+          }
+        },
+        {
+          "label": "Dark Cocoa & Toasted Hazelnut",
+          "points": {
+            "Chocolate Lover": 4,
+            "Bold & Rich": 2
+          }
+        },
+        {
+          "label": "Wild Jasmine, Citrus & Berry",
+          "points": {
+            "Fresh & Fruity": 4
+          }
+        },
+        {
+          "label": "Exotic Cardamom, Truffle & Spices",
+          "points": {
+            "Adventurous Explorer": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "Hot cup or chilled on ice?",
+      "options": [
+        {
+          "label": "Steaming Hot & Cozy",
+          "points": {
+            "Classic Coffee Lover": 2,
+            "Chocolate Lover": 2
+          }
+        },
+        {
+          "label": "Crisp, Cold & Refreshing",
+          "points": {
+            "Fresh & Fruity": 3,
+            "Sweet & Creamy": 2
+          }
+        },
+        {
+          "label": "Depends on the weather!",
+          "points": {
+            "Adventurous Explorer": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "What is your ideal meal style pairing?",
+      "options": [
+        {
+          "label": "Truffle Avocado Toast / Fresh Greens",
+          "points": {
+            "Fresh & Fruity": 3,
+            "Classic Coffee Lover": 2
+          }
+        },
+        {
+          "label": "Creamy Wild Mushroom Rigatoni",
+          "points": {
+            "Bold & Rich": 3,
+            "Adventurous Explorer": 2
+          }
+        },
+        {
+          "label": "Wood-Fired Pizza & Savory Sandwiches",
+          "points": {
+            "Classic Coffee Lover": 2,
+            "Sweet & Creamy": 2
+          }
+        },
+        {
+          "label": "Decadent Dark Chocolate Tart",
+          "points": {
+            "Chocolate Lover": 4,
+            "Sweet & Creamy": 3
+          }
+        }
+      ]
+    }
+  ],
+  "flavourProfiles": {
+    "Sweet & Creamy": {
+      "title": "Sweet & Creamy Connoisseur",
+      "description": "You adore velvety textures, smooth milk foams, and delicate infusions of Madagascar vanilla, caramel drizzle, and blossom honey.",
+      "recommendations": [
+        "p2",
+        "p3",
+        "p10"
+      ]
+    },
+    "Bold & Rich": {
+      "title": "Bold & Rich Enthusiast",
+      "description": "You respect raw depth, intense single-origin espresso, dark chocolate undertones, and robust culinary creations.",
+      "recommendations": [
+        "p1",
+        "p8",
+        "p9"
+      ]
+    },
+    "Fresh & Fruity": {
+      "title": "Fresh & Fruity Explorer",
+      "description": "Your palate craves vibrant floral notes, matcha botanicals, wild berries, and crisp citrus elixirs.",
+      "recommendations": [
+        "p4",
+        "p5",
+        "p11"
+      ]
+    },
+    "Chocolate Lover": {
+      "title": "Decadent Cocoa Devotee",
+      "description": "Chocolate is your love language. You enjoy dark mocha espresso brews, hazelnut pralines, and luxurious desserts.",
+      "recommendations": [
+        "p2",
+        "p10",
+        "p12"
+      ]
+    },
+    "Classic Coffee Lover": {
+      "title": "Purist Coffee Aficionado",
+      "description": "You appreciate clean brewing craftsmanship, gold-standard espresso extractions, and authentic cafe heritage.",
+      "recommendations": [
+        "p1",
+        "p2",
+        "p6"
+      ]
+    },
+    "Adventurous Explorer": {
+      "title": "Artisanal Flavor Pioneer",
+      "description": "You love trying unexpected culinary pairings, truffle aromatics, saffron infusions, and custom creations.",
+      "recommendations": [
+        "p6",
+        "p8",
+        "p9",
+        "p3"
+      ]
+    }
+  },
+  "loyaltyRewards": [
+    {
+      "id": "r1",
+      "title": "Free Artisanal Coffee",
+      "stampsRequired": 8,
+      "pointsCost": 100,
+      "description": "Redeem any size espresso, cappuccino, or cold brew creation.",
+      "code": "FREECOFFEE"
+    },
+    {
+      "id": "r2",
+      "title": "50% Off Any Bakery Item",
+      "stampsRequired": 4,
+      "pointsCost": 60,
+      "description": "Valid on chocolate ganache tart, baklava bites, or toasts.",
+      "code": "BAKERY50"
+    },
+    {
+      "id": "r3",
+      "title": "Complimentary Custom Meal Upgrade",
+      "stampsRequired": 12,
+      "pointsCost": 150,
+      "description": "Free truffle sauce & extra cheese on any custom pasta or plate.",
+      "code": "FREEUPGRADE"
+    }
+  ],
+  "coupons": [
+    {
+      "code": "WELCOME10",
+      "discountPercent": 10,
+      "discountFixed": 0,
+      "minOrder": 15,
+      "expiry": "2026-12-31",
+      "description": "10% off your first artisanal cafe order"
+    },
+    {
+      "code": "ROSA20",
+      "discountPercent": 20,
+      "discountFixed": 0,
+      "minOrder": 30,
+      "expiry": "2026-12-31",
+      "description": "20% off orders over $30"
+    },
+    {
+      "code": "FREESHIP",
+      "discountPercent": 0,
+      "discountFixed": 5,
+      "minOrder": 20,
+      "expiry": "2026-12-31",
+      "description": "Free local delivery discount ($5 off)"
+    },
+    {
+      "code": "FREECOFFEE",
+      "discountPercent": 100,
+      "discountFixed": 5,
+      "minOrder": 0,
+      "expiry": "2026-12-31",
+      "description": "Member Reward: Free Artisanal Coffee"
+    }
+  ],
+  "chatbotFaq": [
+    {
+      "keyword": "hours",
+      "question": "What are your opening hours?",
+      "answer": "Maison Rosa 2 Café is open Monday through Sunday from 7:00 AM to 10:00 PM. Kitchen closes at 9:30 PM."
+    },
+    {
+      "keyword": "location",
+      "question": "Where are you located?",
+      "answer": "We are located at 42 Artisanal Boulevard, Gourmet Quarter. Valet parking and outdoor terrace dining are available!"
+    },
+    {
+      "keyword": "vegan",
+      "question": "What vegan options do you have?",
+      "answer": "We offer Kyoto Matcha Silk Latte, Smoky Vanilla Iced Brew, Berry Botanical Acai Bowl, and full Custom Brew / Custom Meal options with Oat, Almond, Soy, Coconut milks and Tofu/Paneer proteins!"
+    },
+    {
+      "keyword": "loyalty",
+      "question": "How does the digital stamp card work?",
+      "answer": "Earn 1 digital stamp for every coffee order! Collect 8 stamps to unlock 1 Free Artisanal Coffee reward."
+    }
+  ],
+  "users": [
+    {
+      "id": "u1",
+      "name": "Elegance Member",
+      "email": "customer@rosa.cafe",
+      "passwordHash": "$2b$10$e1E0vW5r/H4N2z1bW3k8f.sample",
+      "role": "customer",
+      "stamps": 5,
+      "points": 57,
+      "flavourProfile": "Sweet & Creamy Connoisseur",
+      "savedCreations": [],
+      "vouchers": [
+        {
+          "id": "v_1786859297043",
+          "code": "FREECOFFEE",
+          "title": "Free Artisanal Coffee",
+          "description": "Redeem any size espresso, cappuccino, or cold brew creation.",
+          "discountPercent": 100,
+          "discountFixed": 5,
+          "expiry": "2026-12-31",
+          "used": false,
+          "claimedAt": "2026-08-16T05:48:17.043Z"
+        },
+        {
+          "id": "v_welcome",
+          "code": "WELCOME10",
+          "title": "10% Welcome Member Discount",
+          "description": "Enjoy 10% off your entire gourmet coffee & meal order",
+          "discountPercent": 10,
+          "discountFixed": 0,
+          "expiry": "2026-12-31",
+          "used": false,
+          "claimedAt": "2026-08-16T05:47:00.913Z"
+        }
+      ],
+      "lastCheckIn": "2026-08-16",
+      "checkInStreak": 1,
+      "loyaltyHistory": [
+        {
+          "id": "h_1786859297043",
+          "date": "2026-08-16T05:48:17.043Z",
+          "title": "Redeemed Reward: Free Artisanal Coffee",
+          "stampsChange": 0,
+          "pointsChange": -100
+        },
+        {
+          "id": "h_1786859229053",
+          "date": "2026-08-16T05:47:09.053Z",
+          "title": "Daily Check-In Streak Day 1",
+          "stampsChange": 0,
+          "pointsChange": 17
+        }
+      ]
+    },
+    {
+      "id": "a1",
+      "name": "Rosa Admin Manager",
+      "email": "admin@rosa.cafe",
+      "passwordHash": "$2b$10$e1E0vW5r/H4N2z1bW3k8f.sample",
+      "role": "admin"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-1003",
+      "customerName": "Elegance Member",
+      "email": "customer@rosa.cafe",
+      "phone": "+1 (555) 019-2834",
+      "orderType": "Delivery",
+      "address": "42 Artisanal Boulevard, Suite 10",
+      "items": [
+        {
+          "name": "Artisanal Rosa Cappuccino",
+          "quantity": 1,
+          "price": 5.8,
+          "customDetails": "Extra Oat Milk, Ceylon Cinnamon Dusting",
+          "image": "https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "name": "Avocado & Truffle Tartine",
+          "quantity": 1,
+          "price": 14.5,
+          "customDetails": "Organic Poached Egg, Sourdough",
+          "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "subtotal": 20.3,
+      "discount": 2.03,
+      "tax": 1.64,
+      "deliveryFee": 3.5,
+      "total": 23.41,
+      "status": "Delivered",
+      "createdAt": "2026-08-15T09:30:00Z"
+    },
+    {
+      "id": "ORD-1004",
+      "customerName": "Elegance Member",
+      "email": "customer@rosa.cafe",
+      "phone": "+1 (555) 019-2834",
+      "orderType": "Dine-in",
+      "address": "Table 04 (Window Lounge)",
+      "items": [
+        {
+          "name": "Smoky Vanilla Iced Brew",
+          "quantity": 2,
+          "price": 6.2,
+          "customDetails": "Madagascar Vanilla, 25% Sweetness",
+          "image": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "name": "Wild Mushroom Saffron Rigatoni",
+          "quantity": 1,
+          "price": 18.5,
+          "customDetails": "Bronze-cut Pasta, Truffle Oil",
+          "image": "https://images.unsplash.com/photo-1621996346565-e3d5d628165d?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "subtotal": 30.9,
+      "discount": 0,
+      "tax": 2.78,
+      "deliveryFee": 0,
+      "total": 33.68,
+      "status": "Ready",
+      "createdAt": "2026-08-16T04:15:00Z"
+    },
+    {
+      "id": "ORD-1001",
+      "customerName": "Sophia Laurent",
+      "email": "sophia@example.com",
+      "phone": "+1 (555) 234-5678",
+      "orderType": "Delivery",
+      "address": "128 Luxury Ave, Suite 4B",
+      "items": [
+        {
+          "name": "Artisanal Rosa Cappuccino",
+          "quantity": 2,
+          "price": 5.8
+        },
+        {
+          "name": "Avocado & Truffle Tartine",
+          "quantity": 1,
+          "price": 14.5
+        }
+      ],
+      "subtotal": 26.1,
+      "discount": 2.61,
+      "tax": 2.35,
+      "deliveryFee": 3.5,
+      "total": 29.34,
+      "status": "Preparing",
+      "createdAt": "2026-08-13T08:15:00Z"
+    },
+    {
+      "id": "ORD-1002",
+      "customerName": "Julian Vance",
+      "email": "julian@example.com",
+      "phone": "+1 (555) 876-5432",
+      "orderType": "Dine-in",
+      "address": "Table 07",
+      "items": [
+        {
+          "name": "Wild Mushroom Saffron Rigatoni",
+          "quantity": 1,
+          "price": 18.5
+        },
+        {
+          "name": "Velvet Gold Espresso",
+          "quantity": 1,
+          "price": 4.5
+        }
+      ],
+      "subtotal": 23,
+      "discount": 0,
+      "tax": 2.07,
+      "deliveryFee": 0,
+      "total": 25.07,
+      "status": "Ready",
+      "createdAt": "2026-08-13T08:00:00Z"
+    }
+  ]
+}
