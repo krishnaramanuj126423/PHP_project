@@ -1,0 +1,198 @@
+/* ==================== ADVANCED ADMIN PANEL STYLING ==================== */
+.admin-sidebar {
+  width: 280px;
+  background: #1A1714;
+  color: #FFFFFF;
+  min-height: calc(100vh - 80px);
+  padding: 1.75rem 1.25rem;
+  border-right: 1px solid #2E2721;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 0.85rem;
+  color: #A3968B;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom: 0.35rem;
+}
+
+.admin-nav-item:hover {
+  background: rgba(214, 168, 56, 0.1);
+  color: #F5D061;
+  transform: translateX(3px);
+}
+
+.admin-nav-item.active {
+  background: #2E2519;
+  color: #F5D061;
+  border: 1px solid #5C4524;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.admin-stat-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-warm);
+  border-radius: 1.25rem;
+  padding: 1.4rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(42, 24, 16, 0.08);
+}
+
+html.dark .admin-stat-card {
+  background: #1E1A17;
+  border-color: #362E27;
+}
+
+html.dark .admin-stat-card:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.status-received { background: #E0F2FE; color: #0369A1; border: 1px solid #BAE6FD; }
+.status-confirmed { background: #E0E7FF; color: #4338CA; border: 1px solid #C7D2FE; }
+.status-preparing { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+.status-ready { background: #DCFCE7; color: #15803D; border: 1px solid #BBF7D0; }
+.status-delivery { background: #F3E8FF; color: #7E22CE; border: 1px solid #E9D5FF; }
+.status-delivered { background: #D1FAE5; color: #047857; border: 1px solid #A7F3D0; }
+.status-cancelled { background: #FEE2E2; color: #B91C1C; border: 1px solid #FECACA; }
+
+html.dark .status-received { background: #082F49; color: #7DD3FC; border-color: #075985; }
+html.dark .status-confirmed { background: #1E1B4B; color: #A5B4FC; border-color: #3730A3; }
+html.dark .status-preparing { background: #451A03; color: #FCD34D; border-color: #78350F; }
+html.dark .status-ready { background: #052E16; color: #86EFAC; border-color: #14532D; }
+html.dark .status-delivery { background: #3B0764; color: #D8B4FE; border-color: #6B21A8; }
+html.dark .status-delivered { background: #064E3B; color: #6EE7B7; border-color: #047857; }
+html.dark .status-cancelled { background: #450A0A; color: #FCA5A5; border-color: #7F1D1D; }
+
+/* Pulse animation for pending live orders */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.4; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.pulse-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: #F59E0B;
+  display: inline-block;
+  animation: pulse-ring 2s infinite ease-in-out;
+}
+
+/* Order KDS Cards */
+.kds-order-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-warm);
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.kds-order-card:hover {
+  border-color: #D6A838;
+  box-shadow: 0 10px 24px rgba(42, 24, 16, 0.07);
+}
+
+html.dark .kds-order-card {
+  background: #1E1A17;
+  border-color: #362E27;
+}
+
+html.dark .kds-order-card:hover {
+  border-color: #D6A838;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Admin Quick Action Button */
+.admin-action-btn {
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #F5EBE1;
+  color: #3B2A1E;
+  border: 1px solid #E2D3C4;
+}
+
+.admin-action-btn:hover {
+  background: #E8DACB;
+  color: #1A1714;
+}
+
+html.dark .admin-action-btn {
+  background: #26211D;
+  color: #E8DACB;
+  border-color: #3D342C;
+}
+
+html.dark .admin-action-btn:hover {
+  background: #332A24;
+  color: #FFFFFF;
+}
+
+/* Thermal Receipt Ticket Styling */
+.thermal-receipt {
+  background: #FFFFFF;
+  color: #111827;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 2px dashed #9CA3AF;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* Store Status Dropdown Pill */
+.store-status-pill {
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.store-open { background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
+.store-rush { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+.store-closed { background: #FEE2E2; color: #991B1B; border: 1px solid #FECACA; }
+
+html.dark .store-open { background: #052E16; color: #86EFAC; border-color: #14532D; }
+html.dark .store-rush { background: #451A03; color: #FCD34D; border-color: #78350F; }
+html.dark .store-closed { background: #450A0A; color: #FCA5A5; border-color: #7F1D1D; }
+
