@@ -1,0 +1,241 @@
+/* Digital Loyalty Card & Stamp Pass Styling */
+
+.loyalty-card-container {
+  background: linear-gradient(135deg, #1A0E0A 0%, #321A0F 50%, #4A2E1B 100%);
+  color: #FFFFFF;
+  border-radius: 1.75rem;
+  padding: 2.25rem;
+  box-shadow: 0 25px 50px -12px rgba(42, 24, 16, 0.4);
+  border: 1px solid rgba(212, 163, 89, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Metallic Sheen Overlay */
+.loyalty-card-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(212, 163, 89, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 55%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+}
+
+.loyalty-stamp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin: 1.75rem 0;
+}
+
+@media (max-width: 640px) {
+  .loyalty-stamp-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+.stamp-slot {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: rgba(255, 255, 255, 0.04);
+  position: relative;
+}
+
+.stamp-slot.active {
+  border-style: solid;
+  border-color: #D4A359;
+  background: radial-gradient(circle, #E3B873 0%, #A87E3B 100%);
+  color: #1A0E0A;
+  box-shadow: 0 0 25px rgba(212, 163, 89, 0.6);
+  transform: scale(1.08);
+}
+
+/* CSS-Driven Stamp Falling Animation */
+@keyframes stampFalling {
+  0% {
+    transform: translateY(-140px) scale(3) rotate(-35deg);
+    opacity: 0;
+    filter: drop-shadow(0 25px 35px rgba(0,0,0,0.7));
+  }
+  60% {
+    transform: translateY(8px) scale(0.85) rotate(6deg);
+    opacity: 1;
+    filter: drop-shadow(0 5px 10px rgba(212, 163, 89, 0.9));
+  }
+  75% {
+    transform: translateY(-6px) scale(1.18) rotate(-3deg);
+  }
+  90% {
+    transform: translateY(2px) scale(0.96) rotate(1deg);
+  }
+  100% {
+    transform: translateY(0) scale(1.08) rotate(0deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 25px rgba(212, 163, 89, 0.8));
+  }
+}
+
+.stamp-slot.stamp-falling {
+  animation: stampFalling 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+  z-index: 30;
+}
+
+/* Card Stamp Shake Impact */
+@keyframes cardStampShake {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.025) translateY(4px) rotate(0.6deg); }
+  50% { transform: scale(0.985) translateY(-3px) rotate(-0.5deg); }
+  75% { transform: scale(1.01) translateY(1px); }
+  100% { transform: scale(1); }
+}
+
+.loyalty-card-container.impact-shake {
+  animation: cardStampShake 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Ink Burst Ripple Effect */
+@keyframes inkRipple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.9;
+    border: 3px solid #F5D089;
+    box-shadow: 0 0 15px #E3B873;
+  }
+  100% {
+    width: 130px;
+    height: 130px;
+    opacity: 0;
+    border: 1px solid #D4A359;
+    box-shadow: 0 0 0px transparent;
+  }
+}
+
+.stamp-ripple-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: inkRipple 0.65s ease-out forwards;
+}
+
+.stamp-slot.unlocked {
+  border-color: #10B981;
+  background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+  color: #FFFFFF;
+  animation: pulseUnlock 1.6s infinite;
+}
+
+@keyframes stampPop {
+  0% { transform: scale(0.5) rotate(-15deg); opacity: 0; }
+  70% { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1.08) rotate(0deg); opacity: 1; }
+}
+
+@keyframes pulseUnlock {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 16px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Brass Stamp Button Effect */
+.btn-stamp-action {
+  background: linear-gradient(135deg, #D4A359 0%, #B5853E 100%);
+  color: #1A0E0A;
+  font-weight: 700;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 20px rgba(181, 133, 62, 0.3);
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-stamp-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(181, 133, 62, 0.45);
+  background: linear-gradient(135deg, #E3B873 0%, #C89547 100%);
+}
+
+.btn-stamp-action:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* VIP Tier Card */
+.vip-tier-card {
+  background: #1C1814;
+  border-radius: 1.25rem;
+  border: 1px solid #362E27;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  color: #F6EFE9;
+}
+
+.vip-tier-card:hover {
+  border-color: #D4A359;
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Ticket Pass Voucher */
+.voucher-ticket {
+  background: #1C1814;
+  color: #FFFFFF;
+  border-radius: 1.25rem;
+  border: 2px dashed #D4A359;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.voucher-ticket::before,
+.voucher-ticket::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  background: #12100E;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.voucher-ticket::before { left: -12px; }
+.voucher-ticket::after { right: -12px; }
+
+/* Barcode simulation */
+.barcode-strip {
+  height: 48px;
+  background: repeating-linear-gradient(
+    90deg,
+    #FFFFFF 0px,
+    #FFFFFF 2px,
+    transparent 2px,
+    transparent 4px,
+    #FFFFFF 4px,
+    #FFFFFF 8px,
+    transparent 8px,
+    transparent 11px
+  );
+  border-radius: 4px;
+  opacity: 0.9;
+}
