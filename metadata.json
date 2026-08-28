@@ -1,0 +1,6 @@
+{
+  "name": "Antiquity Cafe",
+  "description": "Full-stack artisanal café platform featuring online ordering, custom beverage & meal studios, live admin management with instant price & inventory controls, interactive flavour quiz, loyalty rewards, and an AI barista sommelier.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antiquity Cafe & Artisanal Roastery</title>
+  <meta name="description" content="Advanced modern, premium café e-commerce, custom meal builder, flavour quiz, and AI chatbot platform at Antiquity Cafe." />
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- App Modular CSS -->
+  <link rel="stylesheet" href="/src/css/main.css" />
+
+  <!-- Immediate Theme Initializer -->
+  <script>
+    (function() {
+      try {
+        document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="dark bg-cream text-espresso selection:bg-amber-800">
+
+  <!-- ==================== STICKY HEADER ==================== -->
+  <header class="header-rosa py-4 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 group" data-view-trigger="home">
+        <i class="fa-solid fa-mug-hot text-2xl text-amber-500 group-hover:rotate-12 transition-transform"></i>
+        <span class="font-serif text-2xl font-bold text-stone-100 tracking-tight">Antiquity <span class="text-amber-400 text-lg italic">Cafe</span></span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#" class="nav-link active" data-view="home" data-view-trigger="home">Home</a>
+        <a href="#" class="nav-link" data-view="menu" data-view-trigger="menu">Menu</a>
+        <a href="#" class="nav-link" data-view="builders" data-view-trigger="builders">Create Your Own</a>
+        <a href="#" class="nav-link" data-view="quiz" data-view-trigger="quiz">Flavour Quiz</a>
+        <a href="#" class="nav-link" data-view="loyalty" data-view-trigger="loyalty">Loyalty Pass</a>
+        <a href="#" class="nav-link" data-view="about" data-view-trigger="about">About</a>
+        <a href="#" class="nav-link" data-view="contact" data-view-trigger="contact">Contact</a>
+      </nav>
+
+      <!-- Right Action Icons -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <!-- Search -->
+        <button class="p-2 text-stone-300 hover:text-amber-400 text-lg transition-colors" data-view-trigger="menu" title="Search Menu">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <!-- Cart Trigger -->
+        <button id="cart-trigger-btn" class="relative p-2 text-stone-300 hover:text-amber-400 text-lg transition-colors" title="Shopping Cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span id="cart-badge-count" class="cart-badge">0</span>
+        </button>
+
+        <!-- User Sign In / Account -->
+        <button class="btn-rosa-outline text-xs py-2 px-4 hidden sm:inline-flex" data-view-trigger="account">
+          <i class="fa-solid fa-user-circle"></i>
+          <span id="nav-user-text">Sign In</span>
+        </button>
+
+        <!-- Admin Link -->
+        <button id="nav-admin-link" class="admin-nav-btn text-xs py-2 px-3.5 hidden" data-view-trigger="admin" title="Manager Portal">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Admin Portal</span>
+        </button>
+
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-stone-200 text-xl">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="drawer-overlay" class="drawer-overlay"></div>
+  <div id="mobile-nav-drawer" class="mobile-nav-drawer">
+    <div class="flex justify-between items-center mb-6">
+      <span class="font-serif text-xl font-bold text-stone-100">Antiquity Cafe</span>
+      <button id="mobile-menu-close" class="text-stone-400 hover:text-stone-200 text-2xl">&times;</button>
+    </div>
+
+    <div class="flex flex-col gap-4 text-base font-medium">
+      <a href="#" class="py-2 border-b border-stone-100" data-view-trigger="home">Home</a>
+      <a href="#" class="py-2 border-b border-stone-100" data-view-trigger="menu">Digital Menu</a>
+      <a href="#" class="py-2 border-b border-stone-100" data-view-trigger="builders">Custom Builders</a>
+      <a href="#" class="py-2 border-b border-stone-100" data-view-trigger="quiz">Flavour Profile Quiz</a>
+      <a href="#" class="py-2 border-b border-stone-100" data-view-trigger="loyalty">Digital Stamp Pass</a>
+      <a href="#" class="py-2 border-b border-stone-100 flex items-center justify-between" data-view-trigger="account">
+        <span>Sign In / My Account</span>
+        <i class="fa-solid fa-user-circle text-stone-400"></i>
+      </a>
+      <a href="#" class="py-2 border-b border-stone-100" data-view-trigger="about">Café Heritage</a>
+      <a href="#" class="py-2 border-b border-stone-100" data-view-trigger="contact">Contact & Hours</a>
+      <a href="#" id="mobile-nav-admin-link" class="py-2.5 px-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold flex items-center justify-between transition-colors hover:bg-amber-500/20 hidden" data-view-trigger="admin">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved text-amber-400"></i>
+          <span>Manager Admin Portal</span>
+        </span>
+        <span class="text-[10px] bg-amber-500 text-stone-950 font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">STAFF</span>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- ==================== VIEW 1: HOME ==================== -->
+  <main id="view-home" class="app-view">
+    <!-- Hero Section -->
+    <section class="hero-section px-6 md:px-12 py-16">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span class="editorial-badge">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              Antiquity Cafe & Artisanal Roastery
+            </span>
+            <span class="text-xs font-semibold text-stone-300 bg-[#1C1814]/90 backdrop-blur-sm px-3 py-1 rounded-full border border-stone-700/80 shadow-sm">
+              <i class="fa-solid fa-clock text-amber-400 mr-1"></i> Open Daily 6:30 AM – 10:00 PM
+            </span>
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-[#F6EFE9] leading-[1.06]">
+            Your Coffee.<br />
+            <span class="italic font-normal text-amber-400">Your Masterpiece.</span>
+          </h1>
+
+          <p class="text-stone-300 text-base md:text-lg max-w-xl leading-relaxed">
+            Welcome to an extraordinary sensory journey. Discover direct-trade single-origin roasts, personalized bespoke brew creations, and gourmet kitchen specialties crafted with culinary mastery.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-3.5 pt-2">
+            <button class="btn-rosa text-xs sm:text-sm py-3.5 px-7 shadow-lg flex items-center gap-2" data-view-trigger="menu">
+              <i class="fa-solid fa-book-open"></i>
+              <span>Explore Digital Menu</span>
+            </button>
+            <button class="btn-rosa-outline text-xs sm:text-sm py-3.5 px-7 flex items-center gap-2 bg-[#1C1814]/80 border-amber-500/60 text-stone-100 hover:bg-amber-500 hover:text-stone-950 transition-colors" data-view-trigger="builders" data-scroll-to="builder-section-brew">
+              <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+              <span>Custom Brew Studio</span>
+            </button>
+            <button class="text-amber-400 hover:text-amber-300 font-semibold text-xs py-3 px-4 transition-colors flex items-center gap-1.5" data-view-trigger="quiz">
+              <i class="fa-solid fa-compass text-amber-400"></i>
+              <span>Take Flavour Quiz</span>
+            </button>
+          </div>
+
+          <!-- Quick Value Highlights -->
+          <div class="pt-6 border-t border-stone-800 grid grid-cols-3 gap-4 max-w-lg text-left">
+            <div>
+              <div class="font-serif text-2xl font-bold text-amber-400">100%</div>
+              <div class="text-[11px] text-stone-400 font-medium">Single-Origin Arabica</div>
+            </div>
+            <div>
+              <div class="font-serif text-2xl font-bold text-amber-400">4.9 <span class="text-amber-400 text-base">★</span></div>
+              <div class="text-[11px] text-stone-400 font-medium">1,200+ Guest Reviews</div>
+            </div>
+            <div>
+              <div class="font-serif text-2xl font-bold text-amber-400">15m</div>
+              <div class="text-[11px] text-stone-400 font-medium">Table & Pickup Speed</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Image & Parallax Card -->
+        <div class="lg:col-span-5">
+          <div class="hero-image-wrapper relative group">
+            <div class="steam-container">
+              <div class="steam-particle"></div>
+              <div class="steam-particle"></div>
+              <div class="steam-particle"></div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80" alt="Artisanal Cafe Interior" class="w-full h-[400px] sm:h-[480px] lg:h-[530px] object-cover" />
+            
+            <!-- Floating Feature Banner -->
+            <div class="absolute bottom-5 left-5 right-5 bg-[#1C1814]/95 backdrop-blur-md p-4 rounded-2xl border border-stone-700/80 shadow-2xl flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-lg shadow-inner">
+                  <i class="fa-solid fa-fire-flame-curved"></i>
+                </div>
+                <div>
+                  <p class="font-serif font-bold text-[#F6EFE9] text-sm">Today's Single-Origin Feature</p>
+                  <p class="text-xs text-stone-400">Ethiopian Yirgacheffe Gold Extractions</p>
+                </div>
+              </div>
+              <button class="btn-rosa text-xs py-2 px-3.5 shrink-0 shadow-sm" data-view-trigger="menu">
+                <span>Taste Now</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Marquee Ticker -->
+    <div class="value-ribbon overflow-x-auto scrollbar-none">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-6 px-4 text-xs">
+        <span class="feature-pill-badge"><i class="fa-solid fa-mug-saucer text-amber-400"></i> Single-Origin Micro-Lots</span>
+        <span class="feature-pill-badge"><i class="fa-solid fa-leaf text-emerald-400"></i> Organic & Fair Trade</span>
+        <span class="feature-pill-badge"><i class="fa-solid fa-bowl-food text-amber-400"></i> Bronze-Cut Fresh Pastas</span>
+        <span class="feature-pill-badge"><i class="fa-solid fa-sliders text-amber-400"></i> Live Interactive Customizer</span>
+        <span class="feature-pill-badge"><i class="fa-solid fa-stamp text-yellow-400"></i> 8-Stamp Free Drink Pass</span>
+        <span class="feature-pill-badge"><i class="fa-solid fa-wifi text-cyan-400"></i> Fast Fiber & Pet Friendly</span>
+      </div>
+    </div>
+
+    <!-- Chef's Curated Specials & Daily Bestsellers (Interactive Grid) -->
+    <section class="py-16 px-6 md:px-12 bg-[#14110E]">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <span class="section-subtitle">Today's Curated Selection</span>
+            <h2 class="section-title mt-1.5">Chef's Signature Creations</h2>
+            <p class="text-stone-300 text-xs md:text-sm mt-1 max-w-lg">Hand-pulled single origins, artisanal cold extractions, and freshly baked pastries ready for quick order or custom tailoring.</p>
+          </div>
+          <button class="btn-rosa-outline text-xs py-2.5 px-5 self-start md:self-auto flex items-center gap-2 border-amber-500/50 text-stone-200 hover:bg-amber-500 hover:text-stone-950 transition-colors" data-view-trigger="menu">
+            <span>View Full Menu (24+ Items)</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
+        </div>
+
+        <!-- Dynamic Featured Items Container -->
+        <div id="home-featured-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="col-span-full text-center py-12 text-stone-400">
+            <i class="fa-solid fa-spinner fa-spin text-2xl text-amber-400 mb-2"></i>
+            <p class="text-xs">Preparing artisanal selection...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Creation Studio Banner (3 Interactive Pillars) -->
+    <section class="py-16 px-6 md:px-12 bg-[#17130F] border-y border-[#2B231B]">
+      <div class="max-w-7xl mx-auto text-center mb-12">
+        <span class="section-subtitle">Interactive Culinary Studio</span>
+        <h2 class="section-title mt-1.5">Craft Your Perfect Plate & Brew</h2>
+        <p class="text-stone-300 text-xs md:text-sm max-w-xl mx-auto mt-2">Personalize every bean origin, steam temperature, plant milk, protein, and artisanal garnish with live nutrition & price breakdown.</p>
+      </div>
+
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 1. Coffee Brew -->
+        <div class="rosa-card bg-[#1E1914] border border-[#332A22] p-6 flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-mug-hot"></i>
+            </div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-[#2D2216] px-2 py-0.5 rounded border border-amber-700/50">Barista Studio</span>
+              <span class="text-[10px] text-stone-400 font-mono">Live Visualizer</span>
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-[#F6EFE9] mb-2">Create Your Brew</h3>
+            <p class="text-xs text-stone-300 mb-5 leading-relaxed">Choose espresso roast origin, oat or almond milk, sweetness ratio, temperature, and drizzle toppings with live cup visualizer.</p>
+          </div>
+          <button class="btn-rosa text-xs py-2.5 w-full flex items-center justify-center gap-2 shadow-md" data-view-trigger="builders" data-scroll-to="builder-section-brew">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Launch Brew Studio</span>
+          </button>
+        </div>
+
+        <!-- 2. Meal Builder -->
+        <div class="rosa-card bg-[#1E1914] border border-[#332A22] p-6 flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-[#2D2216] px-2 py-0.5 rounded border border-amber-700/50">Gourmet Kitchen</span>
+              <span class="text-[10px] text-stone-400 font-mono">Macro Tracker</span>
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-[#F6EFE9] mb-2">Create Your Meal</h3>
+            <p class="text-xs text-stone-300 mb-5 leading-relaxed">Select bronze-cut pasta, organic rice, grilled chicken, paneer, wild chanterelles, and artisanal saffron sauces with real-time calories.</p>
+          </div>
+          <button class="btn-rosa text-xs py-2.5 w-full flex items-center justify-center gap-2 shadow-md" data-view-trigger="builders" data-scroll-to="builder-section-meal">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+            <span>Launch Meal Builder</span>
+          </button>
+        </div>
+
+        <!-- 3. Plate Canvas -->
+        <div class="rosa-card bg-[#1E1914] border border-[#332A22] p-6 flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-plate-wheat"></i>
+            </div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-[#2D2216] px-2 py-0.5 rounded border border-amber-700/50">Table Studio</span>
+              <span class="text-[10px] text-stone-400 font-mono">Canvas Layout</span>
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-[#F6EFE9] mb-2">Create Your Plate</h3>
+            <p class="text-xs text-stone-300 mb-5 leading-relaxed">Interactive top-down dining plate canvas. Compose main item, side dish, garden salad, dip, beverage, and confectionery tart.</p>
+          </div>
+          <button class="btn-rosa text-xs py-2.5 w-full flex items-center justify-center gap-2 shadow-md" data-view-trigger="builders" data-scroll-to="builder-section-plate">
+            <i class="fa-solid fa-palette"></i>
+            <span>Launch Plate Canvas</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dual Interactive Experience: Taste Quiz & AI Barista -->
+    <section class="py-16 px-6 md:px-12 bg-[#12100E]">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Taste Quiz Card -->
+        <div class="rosa-card bg-[#1C1713] border border-amber-600/30 text-white p-8 md:p-10 relative overflow-hidden flex flex-col justify-between shadow-2xl">
+          <div class="relative z-10">
+            <span class="text-amber-400 text-[11px] font-bold uppercase tracking-widest block mb-2">
+              <i class="fa-solid fa-compass text-xs mr-1"></i> Interactive Flavour Engine
+            </span>
+            <h2 class="font-serif text-3xl md:text-4xl font-semibold text-[#F6EFE9] mb-3">Unsure what to order today?</h2>
+            <p class="text-stone-300 text-xs md:text-sm leading-relaxed mb-6">
+              Take our 1-minute Flavour Profile Quiz to discover your ideal roast intensity, sweetness balance, and chef-curated pairings tailored to your palate.
+            </p>
+          </div>
+          <div class="relative z-10 flex flex-wrap gap-3">
+            <button class="btn-gold text-xs py-3 px-6 shadow-md" data-view-trigger="quiz">
+              <i class="fa-solid fa-compass mr-1.5"></i> Take Flavour Quiz
+            </button>
+            <span class="text-stone-400 text-xs self-center">Takes &lt; 60 seconds</span>
+          </div>
+        </div>
+
+        <!-- AI Barista Card -->
+        <div class="rosa-card bg-gradient-to-br from-[#1C1814] via-[#2D1F13] to-[#16120E] border border-amber-500/40 text-white p-8 md:p-10 relative overflow-hidden flex flex-col justify-between shadow-2xl">
+          <div class="relative z-10">
+            <span class="text-amber-300 text-[11px] font-bold uppercase tracking-widest block mb-2">
+              <i class="fa-solid fa-robot text-xs mr-1"></i> AI Sommelier & Barista
+            </span>
+            <h2 class="font-serif text-3xl md:text-4xl font-semibold text-[#F6EFE9] mb-3">Ask Antiquity AI Anything</h2>
+            <p class="text-stone-300 text-xs md:text-sm leading-relaxed mb-6">
+              Get real-time answers on milk allergens, tasting notes, roast origins, or recommendations for pairing with our house sourdough and sweets.
+            </p>
+          </div>
+          <div class="relative z-10 flex flex-wrap gap-3">
+            <button class="btn-rosa text-xs py-3 px-6 shadow-md" onclick="document.getElementById('chatbot-widget-container').classList.add('open')">
+              <i class="fa-solid fa-comments mr-1.5"></i> Chat with Antiquity AI
+            </button>
+            <button class="btn-rosa-outline text-xs py-3 px-5 border-amber-500/50 text-stone-200 hover:bg-amber-500 hover:text-stone-950 transition-colors" data-view-trigger="loyalty">
+              <i class="fa-solid fa-stamp mr-1.5 text-amber-400"></i> Digital Stamp Pass
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Digital Loyalty Pass Spotlight -->
+    <section class="py-14 px-6 md:px-12 bg-[#1C1610] border-y border-amber-600/30">
+      <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="flex items-center gap-5">
+          <div class="w-16 h-16 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center text-3xl shadow-md shrink-0">
+            <i class="fa-solid fa-stamp"></i>
+          </div>
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-600/50">Patron Rewards</span>
+            <h3 class="font-serif text-2xl md:text-3xl font-bold text-[#F6EFE9] mt-1">Collect 8 Stamps, 9th Drink Is Free</h3>
+            <p class="text-xs text-stone-300 mt-1">Every handcrafted beverage earns an instant digital stamp. No plastic cards needed—synced to your phone.</p>
+          </div>
+        </div>
+        <button class="btn-rosa text-xs py-3 px-6 whitespace-nowrap shadow-md" data-view-trigger="loyalty">
+          <i class="fa-solid fa-ticket mr-1.5"></i> Open My Stamp Pass
+        </button>
+      </div>
+    </section>
+
+    <!-- Testimonials & Reviews -->
+    <section class="py-16 px-6 md:px-12 bg-[#14110E]">
+      <div class="max-w-7xl mx-auto text-center mb-12">
+        <span class="section-subtitle">Patron Reflections</span>
+        <h2 class="section-title mt-1.5">Loved by Coffee Connoisseurs</h2>
+      </div>
+
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rosa-card bg-[#1C1814] border border-[#332A22] p-6">
+          <div class="text-amber-400 text-sm mb-3">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-stone-300 text-xs leading-relaxed italic mb-4">"Antiquity Cafe captures the true luxury cafe aesthetic. The custom brew builder is incredible—my oat milk velvet espresso is perfected every single morning."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-amber-600/30 border border-amber-500/40 text-amber-300 font-bold text-xs flex items-center justify-center shadow-sm">CL</div>
+            <div>
+              <p class="font-bold text-[#F6EFE9] text-xs">Clarissa Laurent</p>
+              <p class="text-[10px] text-stone-400">Gold Member • Daily Patron</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rosa-card bg-[#1C1814] border border-[#332A22] p-6">
+          <div class="text-amber-400 text-sm mb-3">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-stone-300 text-xs leading-relaxed italic mb-4">"The Wild Mushroom Saffron Rigatoni paired with their Smoky Cold Brew is culinary perfection. The Digital Loyalty Stamp card is super smooth!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-amber-600/30 border border-amber-500/40 text-amber-300 font-bold text-xs flex items-center justify-center shadow-sm">JV</div>
+            <div>
+              <p class="font-bold text-[#F6EFE9] text-xs">Julian Vance</p>
+              <p class="text-[10px] text-stone-400">Verified Diner • Food Critic</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rosa-card bg-[#1C1814] border border-[#332A22] p-6">
+          <div class="text-amber-400 text-sm mb-3">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-stone-300 text-xs leading-relaxed italic mb-4">"The AI Barista chatbot recommended the Kyoto Matcha Silk Latte based on my sweetness preference. It felt like talking to a real master barista!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-amber-600/30 border border-amber-500/40 text-amber-300 font-bold text-xs flex items-center justify-center shadow-sm">EA</div>
+            <div>
+              <p class="font-bold text-[#F6EFE9] text-xs">Elena Aris</p>
+              <p class="text-[10px] text-stone-400">Regular Guest • Pastry Lover</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit Details & Ambiance Grid -->
+    <section class="py-16 px-6 md:px-12 bg-[#17130F] border-t border-[#2B231B]">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <!-- Hours -->
+          <div class="p-6 rounded-2xl bg-[#1C1814] border border-[#332A22]">
+            <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center mb-3">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <h4 class="font-serif font-bold text-[#F6EFE9] text-lg mb-1">Café Hours</h4>
+            <p class="text-xs text-stone-300">Mon - Fri: 6:30 AM – 10:00 PM</p>
+            <p class="text-xs text-stone-300">Sat - Sun: 7:00 AM – 11:00 PM</p>
+            <span class="inline-block mt-3 text-[11px] text-emerald-300 font-semibold bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-700/50">Kitchen Open All Day</span>
+          </div>
+
+          <!-- Location -->
+          <div class="p-6 rounded-2xl bg-[#1C1814] border border-[#332A22]">
+            <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center mb-3">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <h4 class="font-serif font-bold text-[#F6EFE9] text-lg mb-1">Our Location</h4>
+            <p class="text-xs text-stone-300">128 Luxury Ave, Roastery District</p>
+            <p class="text-xs text-stone-300">Downtown Metropolitan</p>
+            <button class="text-amber-400 hover:text-amber-300 font-semibold text-xs mt-3 block" data-view-trigger="contact">
+              Get Directions & Maps &rarr;
+            </button>
+          </div>
+
+          <!-- Reservations -->
+          <div class="p-6 rounded-2xl bg-[#1C1814] border border-[#332A22]">
+            <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center mb-3">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+            <h4 class="font-serif font-bold text-[#F6EFE9] text-lg mb-1">Table Seating</h4>
+            <p class="text-xs text-stone-300">Walk-ins warmly welcomed anytime.</p>
+            <p class="text-xs text-stone-300">Private tasting rooms available.</p>
+            <button id="home-quick-reserve-btn" class="text-amber-400 hover:text-amber-300 font-semibold text-xs mt-3 block">
+              Reserve a Table &rarr;
+            </button>
+          </div>
+
+          <!-- Amenities -->
+          <div class="p-6 rounded-2xl bg-[#1C1814] border border-[#332A22]">
+            <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center mb-3">
+              <i class="fa-solid fa-sparkles"></i>
+            </div>
+            <h4 class="font-serif font-bold text-[#F6EFE9] text-lg mb-1">Atmosphere</h4>
+            <p class="text-xs text-stone-300">Ultra-fast Fiber WiFi & Power Outlets</p>
+            <p class="text-xs text-stone-300">Pet-friendly garden terrace</p>
+            <span class="inline-block mt-3 text-[11px] text-stone-400 font-medium">Valet Parking Available</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Instagram Gallery -->
+    <section class="py-16 px-6 md:px-12 bg-[#12100E] border-t border-[#2B231B]">
+      <div class="max-w-7xl mx-auto text-center mb-10">
+        <span class="section-subtitle">Visual Atmosphere</span>
+        <h2 class="section-title mt-1">@maison.rosa.cafe</h2>
+        <p class="text-xs text-stone-400 mt-1">Follow our daily roasting journey & tag us in your café moments</p>
+      </div>
+
+      <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="overflow-hidden rounded-2xl group relative aspect-square shadow-sm border border-[#332A22]">
+          <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=500&q=80" alt="Espresso Bar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        </div>
+        <div class="overflow-hidden rounded-2xl group relative aspect-square shadow-sm border border-[#332A22]">
+          <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=500&q=80" alt="Artisanal Breakfast" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        </div>
+        <div class="overflow-hidden rounded-2xl group relative aspect-square shadow-sm border border-[#332A22]">
+          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=500&q=80" alt="Bakery Pastries" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        </div>
+        <div class="overflow-hidden rounded-2xl group relative aspect-square shadow-sm border border-[#332A22]">
+          <img src="https://images.unsplash.com/photo-1621996346565-e3def6164286?auto=format&fit=crop&w=500&q=80" alt="Pasta Dish" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ==================== VIEW 2: DIGITAL MENU ==================== -->
+  <main id="view-menu" class="app-view hidden py-24 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="section-subtitle">Artisanal Offerings</span>
+        <h1 class="section-title mt-2">Our Digital Café Menu</h1>
+      </div>
+
+      <!-- Live Search, Sort & Categories -->
+      <div class="mb-10 space-y-4">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-3 max-w-2xl mx-auto">
+          <div class="w-full relative flex-1">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 text-sm"></i>
+            <input type="text" id="menu-search-input" placeholder="Search drinks, roasts, ingredients, pasta, pizza, desserts..." class="w-full pl-11 pr-4 py-3 rounded-full border border-stone-300 bg-white text-xs focus:outline-none focus:border-amber-700 shadow-sm transition-all" />
+            <button id="menu-search-clear" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700 text-xs hidden" title="Clear Search">
+              <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+          </div>
+
+          <!-- Sort Select -->
+          <div class="w-full md:w-auto flex items-center gap-2 bg-white px-3.5 py-2.5 rounded-full border border-stone-300 text-xs shadow-sm">
+            <i class="fa-solid fa-arrow-down-short-wide text-amber-800"></i>
+            <span class="text-stone-500 font-medium whitespace-nowrap">Sort:</span>
+            <select id="menu-sort-select" class="bg-transparent text-stone-800 font-semibold focus:outline-none cursor-pointer pr-2 text-xs">
+              <option value="featured">Featured / Curated</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="calories-asc">Calories: Lowest</option>
+              <option value="popular">Most Popular</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Category Horizontal Scroll Bar -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-start md:justify-center px-2" id="menu-category-pills">
+          <button class="category-pill active" data-category="All"><i class="fa-solid fa-utensils mr-1.5 text-xs"></i> All Items</button>
+          <button class="category-pill" data-category="Coffee"><i class="fa-solid fa-mug-hot mr-1.5 text-xs"></i> Coffee</button>
+          <button class="category-pill" data-category="Tea"><i class="fa-solid fa-leaf mr-1.5 text-xs"></i> Tea</button>
+          <button class="category-pill" data-category="Cold Drinks"><i class="fa-solid fa-glass-water mr-1.5 text-xs"></i> Cold Drinks</button>
+          <button class="category-pill" data-category="Smoothies"><i class="fa-solid fa-blender mr-1.5 text-xs"></i> Smoothies</button>
+          <button class="category-pill" data-category="Breakfast"><i class="fa-solid fa-egg mr-1.5 text-xs"></i> Breakfast</button>
+          <button class="category-pill" data-category="Sandwiches"><i class="fa-solid fa-bread-slice mr-1.5 text-xs"></i> Sandwiches</button>
+          <button class="category-pill" data-category="Pasta"><i class="fa-solid fa-bowl-food mr-1.5 text-xs"></i> Pasta</button>
+          <button class="category-pill" data-category="Pizza"><i class="fa-solid fa-pizza-slice mr-1.5 text-xs"></i> Pizza</button>
+          <button class="category-pill" data-category="Desserts"><i class="fa-solid fa-cake-candles mr-1.5 text-xs"></i> Desserts</button>
+          <button class="category-pill" data-category="Snacks"><i class="fa-solid fa-cookie-bite mr-1.5 text-xs"></i> Snacks</button>
+          <button class="category-pill" data-category="Special Offers"><i class="fa-solid fa-tag mr-1.5 text-xs"></i> Special Offers</button>
+        </div>
+
+        <!-- Filter Tags & Active State Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-stone-200/60 max-w-4xl mx-auto">
+          <div class="flex flex-wrap items-center gap-2 text-xs">
+            <span class="text-stone-400 font-medium text-[11px] mr-1"><i class="fa-solid fa-filter"></i> Filters:</span>
+            <button class="filter-tag-btn border border-stone-300 px-3 py-1.5 rounded-full bg-white text-stone-700 hover:border-amber-700 transition-colors" data-filter="veg">🌿 Vegetarian</button>
+            <button class="filter-tag-btn border border-stone-300 px-3 py-1.5 rounded-full bg-white text-stone-700 hover:border-amber-700 transition-colors" data-filter="vegan">🌱 Vegan</button>
+            <button class="filter-tag-btn border border-stone-300 px-3 py-1.5 rounded-full bg-white text-stone-700 hover:border-amber-700 transition-colors" data-filter="bestseller">⭐ Bestsellers</button>
+            <button class="filter-tag-btn border border-stone-300 px-3 py-1.5 rounded-full bg-white text-stone-700 hover:border-amber-700 transition-colors" data-filter="spicy">🌶️ Spicy</button>
+            <button class="filter-tag-btn border border-stone-300 px-3 py-1.5 rounded-full bg-white text-stone-700 hover:border-amber-700 transition-colors" data-filter="lowCalorie">🔥 Low Calorie (&le;250 kcal)</button>
+          </div>
+
+          <div class="flex items-center gap-3 text-xs text-stone-500 w-full sm:w-auto justify-between sm:justify-end">
+            <span id="menu-item-count" class="font-medium text-stone-700">Loading offerings...</span>
+            <button id="menu-clear-all-filters" class="text-amber-800 hover:text-amber-900 font-semibold underline text-xs hidden">
+              Reset Filters
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Grid -->
+      <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamically rendered by menu.js -->
+      </div>
+    </div>
+  </main>
+
+
+  <!-- ==================== VIEW 3: CUSTOM BUILDERS ==================== -->
+  <main id="view-builders" class="app-view hidden py-24 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="section-subtitle">Customization Studio</span>
+        <h1 class="section-title mt-2">Build Your Signature Order</h1>
+      </div>
+
+      <!-- Builder Tabs -->
+      <div class="flex justify-center gap-4 mb-10">
+        <button class="btn-rosa text-xs py-2.5 px-6" onclick="document.getElementById('builder-section-brew').scrollIntoView({behavior:'smooth'})">Custom Coffee Brew</button>
+        <button class="btn-rosa-outline text-xs py-2.5 px-6" onclick="document.getElementById('builder-section-meal').scrollIntoView({behavior:'smooth'})">Custom Chef Meal</button>
+        <button class="btn-rosa-outline text-xs py-2.5 px-6" onclick="document.getElementById('builder-section-plate').scrollIntoView({behavior:'smooth'})">Visual Grand Plate</button>
+      </div>
+
+      <!-- 1. COFFEE BREW BUILDER -->
+      <section id="builder-section-brew" class="rosa-card p-6 md:p-10 mb-12">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="editorial-badge mb-2"><i class="fa-solid fa-mug-hot"></i> Artisanal Coffee Barista Studio</span>
+          <h3 class="font-serif text-3xl md:text-4xl font-semibold text-stone-900 mb-2">1. Create Your Own Brew</h3>
+          <p class="text-xs md:text-sm text-stone-600">
+            Tailor every drop of your handcrafted espresso beverage. Choose your roast origin, steam temperature, microfoam dairy, craft syrups, and finishing confectionery drizzles.
+          </p>
+        </div>
+
+        <!-- Barista Signature Presets -->
+        <div class="mb-10 bg-stone-50/80 p-4 rounded-2xl border border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2 text-stone-700 font-semibold">
+            <i class="fa-solid fa-wand-magic-sparkles text-amber-700"></i>
+            <span>Head Barista's Signature Creations:</span>
+          </div>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50 border border-stone-300 hover:border-amber-700 text-stone-800 font-medium transition text-[11px]" onclick="Builders.loadBrewPreset('madagascar-latte')">
+              ☕ Velvet Madagascar Latte
+            </button>
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50 border border-stone-300 hover:border-amber-700 text-stone-800 font-medium transition text-[11px]" onclick="Builders.loadBrewPreset('caramel-coldbrew')">
+              🧊 Salted Caramel Cloud Cold Brew
+            </button>
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50 border border-stone-300 hover:border-amber-700 text-stone-800 font-medium transition text-[11px]" onclick="Builders.loadBrewPreset('truffle-mocha')">
+              🍫 Dark Belgian Truffle Mocha
+            </button>
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50 border border-stone-300 hover:border-amber-700 text-stone-800 font-medium transition text-[11px]" onclick="Builders.loadBrewPreset('honey-macchiato')">
+              🍯 Lavender Honey Oat Macchiato
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Animated Coffee Cup Preview (Sticky on desktop) -->
+          <div class="lg:col-span-5 text-center bg-stone-50 p-6 rounded-3xl border border-stone-200 lg:sticky lg:top-24 shadow-inner">
+            <span class="text-[10px] uppercase font-bold text-amber-800 tracking-wider block mb-3">Live Barista Cup Visualizer</span>
+
+            <div class="coffee-cup-viewport mb-6">
+              <!-- Cup Assembly (Scales seamlessly as one unit) -->
+              <div id="brew-cup-assembly" class="coffee-cup-assembly">
+                <!-- Steam Animation for Hot Drinks -->
+                <div id="brew-steam-effect" class="coffee-steam-container">
+                  <div class="coffee-steam-particle"></div>
+                  <div class="coffee-steam-particle"></div>
+                  <div class="coffee-steam-particle"></div>
+                </div>
+
+                <!-- Straw for Iced Drinks -->
+                <div id="brew-straw" class="coffee-straw"></div>
+
+                <!-- Whipped Cream Peak (Topping) -->
+                <div id="brew-whipped-cream" class="coffee-whipped-cream">
+                  <div class="whipped-cream-puff puff-1"></div>
+                  <div class="whipped-cream-puff puff-2"></div>
+                  <div class="whipped-cream-puff puff-3"></div>
+                  <div class="whipped-cream-top"></div>
+                </div>
+
+                <!-- Main Cup Body -->
+                <div class="coffee-cup-body" id="brew-cup-container">
+                  <!-- Glass / Ceramic Highlights -->
+                  <div class="cup-gloss-reflection"></div>
+                  <div class="cup-rim-highlight"></div>
+
+                  <!-- Coffee Liquid Layer -->
+                  <div id="brew-liquid-fill" class="coffee-liquid-fill">
+                    <div class="liquid-crema-gradient"></div>
+                  </div>
+
+                  <!-- Milk Foam Layer -->
+                  <div id="brew-milk-foam" class="coffee-milk-foam">
+                    <!-- Barista Latte Art -->
+                    <div id="brew-latte-art" class="latte-art-badge">
+                      <i class="fa-solid fa-heart text-amber-900/40 text-xs"></i>
+                    </div>
+                    <!-- Syrup / Sauce Drizzle -->
+                    <div id="brew-topping-drizzle" class="coffee-topping-drizzle"></div>
+                    <!-- Cocoa / Cinnamon / Gold Dust -->
+                    <div id="brew-topping-dust" class="coffee-topping-dust"></div>
+                  </div>
+
+                  <!-- Floating Ice Cubes Layer (for Iced Drinks) -->
+                  <div id="brew-ice-layer" class="ice-cubes-layer">
+                    <div class="ice-cube ice-1"></div>
+                    <div class="ice-cube ice-2"></div>
+                    <div class="ice-cube ice-3"></div>
+                    <div class="ice-cube ice-4"></div>
+                  </div>
+                </div>
+
+                <!-- Mug Handle -->
+                <div class="coffee-cup-handle" id="brew-cup-handle"></div>
+
+                <!-- Saucer / Coaster Base -->
+                <div class="coffee-cup-saucer" id="brew-cup-saucer"></div>
+              </div>
+            </div>
+
+            <div id="brew-summary-box" class="text-left bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <!-- Rendered by builders.js -->
+            </div>
+          </div>
+
+          <!-- Options Controls -->
+          <div class="lg:col-span-7 space-y-6 text-xs">
+            <!-- 1. Cup Size & Temperature -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-4">
+              <div>
+                <div class="flex justify-between items-center mb-3">
+                  <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">1</span>
+                    Select Cup Size & Temperature
+                  </label>
+                  <span class="text-[11px] text-amber-800 font-semibold" id="brew-badge-size">Standard 12oz</span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-3" id="brew-sizes-container">
+                  <button class="builder-option-pill brew-option-size" data-name="Small (8oz Piccolo)" data-price="120" data-scale="0.85" data-shots="1">
+                    <i class="fa-solid fa-mug-saucer text-amber-700"></i> Piccolo 8oz <span class="text-stone-400 font-normal">(₹120)</span>
+                  </button>
+                  <button class="builder-option-pill brew-option-size selected" data-name="Standard (12oz Antiquity)" data-price="160" data-scale="1.0" data-shots="2">
+                    <i class="fa-solid fa-mug-hot text-amber-700"></i> Standard 12oz <span class="text-stone-400 font-normal">(₹160)</span>
+                  </button>
+                  <button class="builder-option-pill brew-option-size" data-name="Grand (16oz Artisanal)" data-price="200" data-scale="1.15" data-shots="3">
+                    <i class="fa-solid fa-whiskey-glass text-amber-700"></i> Grand 16oz <span class="text-stone-400 font-normal">(₹200)</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-stone-100">
+                <label class="block font-bold text-stone-800 mb-2">Serving Temperature</label>
+                <div class="flex flex-wrap gap-2">
+                  <button class="builder-option-pill brew-option-temp selected" data-name="Steaming Hot" data-temp-type="hot">
+                    <i class="fa-solid fa-fire text-amber-700"></i> Steaming Hot (65°C)
+                  </button>
+                  <button class="builder-option-pill brew-option-temp" data-name="Extra Hot" data-temp-type="hot">
+                    <i class="fa-solid fa-temperature-high text-red-700"></i> Extra Hot (75°C)
+                  </button>
+                  <button class="builder-option-pill brew-option-temp" data-name="Over Hand-Carved Ice" data-temp-type="iced">
+                    <i class="fa-solid fa-snowflake text-sky-600"></i> Over Carved Ice
+                  </button>
+                  <button class="builder-option-pill brew-option-temp" data-name="Nitro Draft Chilled" data-temp-type="iced">
+                    <i class="fa-solid fa-wind text-cyan-600"></i> Nitro Draft Chilled
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Coffee Style & Bean Origin -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-4">
+              <div>
+                <div class="flex justify-between items-center mb-3">
+                  <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">2</span>
+                    Select Espresso Style & Origin
+                  </label>
+                  <span class="text-[11px] text-amber-800 font-semibold" id="brew-badge-coffee">Velvety Latte</span>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-3" id="brew-coffees-container">
+                  <button class="builder-option-pill brew-option-coffee selected" data-name="Velvety Latte" data-price="0.00" data-color="#5C3826" data-fill="70" data-caffeine="150" data-foam="35">
+                    <i class="fa-solid fa-mug-hot text-amber-700"></i> Velvety Latte
+                  </button>
+                  <button class="builder-option-pill brew-option-coffee" data-name="Double Espresso" data-price="0.00" data-color="#2A1810" data-fill="40" data-caffeine="160" data-foam="10">
+                    <i class="fa-solid fa-democrat text-amber-950"></i> Double Espresso
+                  </button>
+                  <button class="builder-option-pill brew-option-coffee" data-name="Microfoam Cappuccino" data-price="20" data-color="#4A2E1B" data-fill="60" data-caffeine="150" data-foam="45">
+                    <i class="fa-solid fa-cloud text-amber-700"></i> Cappuccino (+ ₹20)
+                  </button>
+                  <button class="builder-option-pill brew-option-coffee" data-name="Cold Brew Infusion" data-price="30" data-color="#1B0F09" data-fill="85" data-caffeine="200" data-foam="0">
+                    <i class="fa-solid fa-glass-water text-amber-900"></i> Cold Brew Infusion (+ ₹30)
+                  </button>
+                  <button class="builder-option-pill brew-option-coffee" data-name="Cortado 1:1" data-price="0.00" data-color="#3D2415" data-fill="50" data-caffeine="150" data-foam="20">
+                    <i class="fa-solid fa-whiskey-glass text-amber-800"></i> Cortado 1:1
+                  </button>
+                  <button class="builder-option-pill brew-option-coffee" data-name="Caffè Americano" data-price="-15" data-color="#26140B" data-fill="80" data-caffeine="150" data-foam="5">
+                    <i class="fa-solid fa-water text-amber-900"></i> Caffè Americano (- ₹15)
+                  </button>
+                </div>
+              </div>
+
+              <!-- Bean Origin & Extra Shots -->
+              <div class="pt-3 border-t border-stone-100 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-bold text-stone-800 mb-2">Single-Origin Roast</label>
+                  <div class="flex flex-col gap-1.5" id="brew-roasts-container">
+                    <button class="builder-option-pill brew-option-roast selected text-left" data-name="Ethiopia Yirgacheffe (Floral & Bergamot)">
+                      <i class="fa-solid fa-seedling text-amber-700"></i> Ethiopia Yirgacheffe
+                    </button>
+                    <button class="builder-option-pill brew-option-roast text-left" data-name="Italian Velvet Dark Roast (Cacao & Walnut)">
+                      <i class="fa-solid fa-gem text-amber-950"></i> Italian Dark Roast
+                    </button>
+                    <button class="builder-option-pill brew-option-roast text-left" data-name="Colombia Supremo (Toasted Almond & Caramel)">
+                      <i class="fa-solid fa-sun text-amber-600"></i> Colombia Supremo
+                    </button>
+                    <button class="builder-option-pill brew-option-roast text-left" data-name="Swiss Water Decaf (Malt & Vanilla)">
+                      <i class="fa-solid fa-moon text-blue-800"></i> Swiss Water Decaf
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block font-bold text-stone-800 mb-2">Espresso Shot Intensity</label>
+                  <div class="flex flex-col gap-1.5" id="brew-shots-container">
+                    <button class="builder-option-pill brew-option-shots selected text-left" data-name="Double Shot (Standard)" data-price="0.00" data-caff="150">
+                      <i class="fa-solid fa-circle text-amber-700"></i> Double Shot <span class="text-stone-400 font-normal">(Included)</span>
+                    </button>
+                    <button class="builder-option-pill brew-option-shots text-left" data-name="Single Shot (Lighter)" data-price="0.00" data-caff="75">
+                      <i class="fa-regular fa-circle text-amber-700"></i> Single Shot <span class="text-stone-400 font-normal">(Lighter)</span>
+                    </button>
+                    <button class="builder-option-pill brew-option-shots text-left" data-name="Triple Shot (+1 Extra)" data-price="35" data-caff="225">
+                      <i class="fa-solid fa-circle-plus text-amber-700"></i> Triple Shot <span class="text-stone-400 font-normal">(+₹35)</span>
+                    </button>
+                    <button class="builder-option-pill brew-option-shots text-left" data-name="Quad Shot (+2 Extra)" data-price="60" data-caff="300">
+                      <i class="fa-solid fa-bolt text-amber-700"></i> Quad Shot <span class="text-stone-400 font-normal">(+₹60)</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Artisanal Milk Choice -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">3</span>
+                  Select Artisanal Milk & Microfoam
+                </label>
+                <span class="text-[11px] text-amber-800 font-semibold" id="brew-badge-milk">Barista Oat Milk</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="brew-milks-container">
+                <button class="builder-option-pill brew-option-milk selected" data-name="Barista Oat Milk" data-price="30" data-color="#F3E9D5" data-cal="90">
+                  <i class="fa-solid fa-wheat-awn text-amber-700"></i> Barista Oat Milk <span class="text-stone-400 font-normal">(+₹30 • 90 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-milk" data-name="Roasted Almond Milk" data-price="30" data-color="#FFF8EC" data-cal="45">
+                  <i class="fa-solid fa-seedling text-amber-700"></i> Almond Milk <span class="text-stone-400 font-normal">(+₹30 • 45 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-milk" data-name="Organic Whole Dairy Milk" data-price="0.00" data-color="#FFFFFF" data-cal="130">
+                  <i class="fa-solid fa-cow text-amber-700"></i> Organic Whole Milk <span class="text-stone-400 font-normal">(₹0.00 • 130 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-milk" data-name="Silk Coconut Milk" data-price="30" data-color="#FFFDF7" data-cal="70">
+                  <i class="fa-solid fa-tree text-amber-700"></i> Coconut Milk <span class="text-stone-400 font-normal">(+₹30 • 70 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-milk" data-name="Sicilian Pistachio Milk" data-price="40" data-color="#EDF7E7" data-cal="95">
+                  <i class="fa-solid fa-leaf text-emerald-700"></i> Pistachio Milk <span class="text-stone-400 font-normal">(+₹40 • 95 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-milk" data-name="Sweet Vanilla Cold Foam" data-price="35" data-color="#FFF5DE" data-cal="110">
+                  <i class="fa-solid fa-cloud text-amber-700"></i> Sweet Cold Foam <span class="text-stone-400 font-normal">(+₹35 • 110 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-milk" data-name="None (Pure Black Roast)" data-price="0.00" data-color="transparent" data-cal="5">
+                  <i class="fa-solid fa-ban text-stone-400"></i> None (Pure Black) <span class="text-stone-400 font-normal">(₹0.00 • 5 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 4. Craft Syrups & Infusions -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">4</span>
+                  Select Craft Syrup & Infusion
+                </label>
+                <span class="text-[11px] text-amber-800 font-semibold" id="brew-badge-flavor">Madagascar Bourbon Vanilla</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="brew-flavors-container">
+                <button class="builder-option-pill brew-option-flavor selected" data-name="Madagascar Bourbon Vanilla" data-price="25" data-cal="60">
+                  <i class="fa-solid fa-wand-magic text-amber-700"></i> Madagascar Vanilla <span class="text-stone-400 font-normal">(+₹25 • 60 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-flavor" data-name="House Salted Caramel" data-price="25" data-cal="70">
+                  <i class="fa-solid fa-cubes text-amber-700"></i> Salted Caramel <span class="text-stone-400 font-normal">(+₹25 • 70 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-flavor" data-name="Hazelnut Praline" data-price="25" data-cal="65">
+                  <i class="fa-solid fa-gem text-amber-700"></i> Hazelnut Praline <span class="text-stone-400 font-normal">(+₹25 • 65 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-flavor" data-name="Lavender Blossom Honey" data-price="30" data-cal="55">
+                  <i class="fa-solid fa-spa text-purple-700"></i> Lavender Honey <span class="text-stone-400 font-normal">(+₹30 • 55 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-flavor" data-name="Spiced Brown Sugar & Cardamom" data-price="30" data-cal="60">
+                  <i class="fa-solid fa-mortar-pestle text-amber-800"></i> Spiced Brown Sugar <span class="text-stone-400 font-normal">(+₹30 • 60 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-flavor" data-name="Belgian Dark Mocha" data-price="35" data-cal="85">
+                  <i class="fa-solid fa-cookie text-amber-950"></i> Dark Mocha <span class="text-stone-400 font-normal">(+₹35 • 85 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-flavor" data-name="None (Unflavored)" data-price="0.00" data-cal="0">
+                  <i class="fa-solid fa-ban text-stone-400"></i> Pure (No Syrup) <span class="text-stone-400 font-normal">(₹0.00 • 0 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 5. Artisanal Toppings & Drizzles (Multi-Select) -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">5</span>
+                  Finishing Toppings & Drizzles <span class="text-stone-400 font-normal text-xs">(Select multiple)</span>
+                </label>
+                <span class="text-[11px] text-purple-800 font-semibold" id="brew-badge-toppings">2 selected</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="brew-toppings-container">
+                <button class="builder-option-pill brew-option-topping selected" data-name="House Whipped Cream" data-price="25" data-cal="80" data-drizzle="#FFFFFF">
+                  <i class="fa-solid fa-cloud text-amber-700"></i> Whipped Cream <span class="text-stone-400 font-normal">(+₹25 • 80 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-topping selected" data-name="Artisanal Caramel Drizzle" data-price="20" data-cal="40" data-drizzle="#C59B27">
+                  <i class="fa-solid fa-droplet text-amber-600"></i> Caramel Drizzle <span class="text-stone-400 font-normal">(+₹20 • 40 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-topping" data-name="Belgian Dark Cocoa Dust" data-price="15" data-cal="15" data-drizzle="#3B2219">
+                  <i class="fa-solid fa-sparkles text-amber-950"></i> Cocoa Dust <span class="text-stone-400 font-normal">(+₹15 • 15 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-topping" data-name="Ceylon Cinnamon Dust" data-price="15" data-cal="5" data-drizzle="#8B5A2B">
+                  <i class="fa-solid fa-leaf text-amber-800"></i> Ceylon Cinnamon <span class="text-stone-400 font-normal">(+₹15 • 5 kcal)</span>
+                </button>
+                <button class="builder-option-pill brew-option-topping" data-name="24k Edible Gold Leaf" data-price="60" data-cal="0" data-drizzle="#FFD700">
+                  <i class="fa-solid fa-crown text-amber-500"></i> 24k Gold Leaf <span class="text-stone-400 font-normal">(+₹60 • 0 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 6. Sweetness Level -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-2">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">6</span>
+                  Cane Sugar Sweetness
+                </label>
+                <span id="brew-sweetness-val" class="font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">50% (Semi-Sweet)</span>
+              </div>
+              <input type="range" id="brew-sweetness-slider" min="0" max="100" step="25" value="50" class="w-full accent-amber-700 cursor-pointer h-2 bg-stone-200 rounded-lg" />
+              <div class="flex justify-between text-[10px] text-stone-500 mt-1 font-medium">
+                <span>0% (Unsweetened)</span>
+                <span>25% (Light)</span>
+                <span>50% (Semi-Sweet)</span>
+                <span>75% (Sweet)</span>
+                <span>100% (Full Sweet)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. MEAL BUILDER -->
+      <section id="builder-section-meal" class="rosa-card p-6 md:p-10 mb-12">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="editorial-badge mb-2"><i class="fa-solid fa-bowl-food"></i> Interactive Culinary Studio</span>
+          <h3 class="font-serif text-3xl md:text-4xl font-semibold text-stone-900 mb-2">2. Create Your Own Custom Meal</h3>
+          <p class="text-xs md:text-sm text-stone-600">
+            Craft your signature hot bowl or skillet. Pair bronze-cut pasta, organic grains, or fresh farm greens with artisan proteins, sautéed forest vegetables, chef's reductions, and crunchy garnishes.
+          </p>
+        </div>
+
+        <!-- Chef Curated Meal Presets -->
+        <div class="mb-10 bg-stone-50/80 p-4 rounded-2xl border border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2 text-stone-700 font-semibold">
+            <i class="fa-solid fa-wand-magic-sparkles text-amber-700"></i>
+            <span>Chef's Signature Combinations:</span>
+          </div>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50 border border-stone-300 hover:border-amber-700 text-stone-800 font-medium transition text-[11px]" onclick="Builders.loadMealPreset('truffle-chicken')">
+              🍗 Truffle Alfredo Chicken
+            </button>
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50 border border-stone-300 hover:border-amber-700 text-stone-800 font-medium transition text-[11px]" onclick="Builders.loadMealPreset('salmon-quinoa')">
+              🐟 Salmon Quinoa Harvest
+            </button>
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50 border border-stone-300 hover:border-amber-700 text-stone-800 font-medium transition text-[11px]" onclick="Builders.loadMealPreset('shortrib-risotto')">
+              🥩 Braised Short Rib Risotto
+            </button>
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50 border border-stone-300 hover:border-amber-700 text-stone-800 font-medium transition text-[11px]" onclick="Builders.loadMealPreset('vegan-bowl')">
+              🌱 Vegan Roasted Harvest
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Interactive Visual Bowl Display (Sticky on desktop) -->
+          <div class="lg:col-span-5 text-center bg-stone-50 p-6 rounded-3xl border border-stone-200 lg:sticky lg:top-24 shadow-inner">
+            <span class="text-[10px] uppercase font-bold text-amber-800 tracking-wider block mb-3">Live Culinary Bowl Composition</span>
+            
+            <div class="meal-bowl-viewport mb-6">
+              <div class="meal-bowl-container" id="meal-bowl-canvas">
+                <!-- Dynamic Visual Ingredient Badges -->
+                <div id="meal-slot-base" class="meal-layer-badge meal-badge-base"><i class="fa-solid fa-bowl-rice"></i> Rigatoni Pasta</div>
+                <div id="meal-slot-protein" class="meal-layer-badge meal-badge-protein"><i class="fa-solid fa-drumstick-bite"></i> Grilled Chicken</div>
+                <div id="meal-slot-sauce" class="meal-layer-badge meal-badge-sauce"><i class="fa-solid fa-bottle-droplet"></i> Creamy Alfredo</div>
+                <div id="meal-slot-veggies" class="flex flex-wrap justify-center gap-1 mt-1">
+                  <!-- Rendered dynamically -->
+                </div>
+                <div id="meal-slot-extras" class="flex flex-wrap justify-center gap-1 mt-1">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+            </div>
+
+            <div id="meal-summary-box" class="text-left bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <!-- Rendered by builders.js -->
+            </div>
+          </div>
+
+          <!-- Step-by-Step Meal Controls -->
+          <div class="lg:col-span-7 space-y-6 text-xs">
+            <!-- 1. Base Foundation -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">1</span>
+                  Select Foundation Base
+                </label>
+                <span class="text-[11px] text-amber-800 font-semibold" id="meal-badge-base">Rigatoni Pasta</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="meal-bases-container">
+                <button class="builder-option-pill meal-option-base selected" data-name="Pasta (Bronze Rigatoni)" data-price="180" data-cal="220" data-icon="fa-wheat-awn">
+                  <i class="fa-solid fa-wheat-awn text-amber-700"></i> Rigatoni Pasta <span class="text-stone-400 font-normal">(₹180 • 220 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-base" data-name="Organic Jasmine Rice" data-price="140" data-cal="180" data-icon="fa-bowl-rice">
+                  <i class="fa-solid fa-bowl-rice text-amber-700"></i> Jasmine Rice <span class="text-stone-400 font-normal">(₹140 • 180 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-base" data-name="Saffron Carnaroli Risotto" data-price="210" data-cal="240" data-icon="fa-spoon">
+                  <i class="fa-solid fa-spoon text-amber-700"></i> Saffron Risotto <span class="text-stone-400 font-normal">(₹210 • 240 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-base" data-name="Artisanal Sourdough Toast" data-price="160" data-cal="200" data-icon="fa-bread-slice">
+                  <i class="fa-solid fa-bread-slice text-amber-700"></i> Sourdough Toast <span class="text-stone-400 font-normal">(₹160 • 200 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-base" data-name="Mediterranean Herb Quinoa" data-price="170" data-cal="170" data-icon="fa-seedling">
+                  <i class="fa-solid fa-seedling text-amber-700"></i> Herb Quinoa <span class="text-stone-400 font-normal">(₹170 • 170 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-base" data-name="Fresh Wild Greens Bowl" data-price="150" data-cal="90" data-icon="fa-leaf">
+                  <i class="fa-solid fa-leaf text-amber-700"></i> Farm Salad Greens <span class="text-stone-400 font-normal">(₹150 • 90 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Protein Choice -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">2</span>
+                  Select Gourmet Protein
+                </label>
+                <span class="text-[11px] text-amber-800 font-semibold" id="meal-badge-protein">Grilled Chicken</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="meal-proteins-container">
+                <button class="builder-option-pill meal-option-protein selected" data-name="Grilled Tuscan Herb Chicken" data-price="120" data-cal="240" data-icon="fa-drumstick-bite">
+                  <i class="fa-solid fa-drumstick-bite text-amber-700"></i> Grilled Herb Chicken <span class="text-stone-400 font-normal">(₹120 • 240 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-protein" data-name="Pan-Seared Atlantic Salmon" data-price="180" data-cal="280" data-icon="fa-fish">
+                  <i class="fa-solid fa-fish text-amber-700"></i> Seared Salmon <span class="text-stone-400 font-normal">(₹180 • 280 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-protein" data-name="Slow-Braised Prime Short Rib" data-price="220" data-cal="320" data-icon="fa-bacon">
+                  <i class="fa-solid fa-bacon text-amber-700"></i> Braised Short Rib <span class="text-stone-400 font-normal">(₹220 • 320 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-protein" data-name="Pan-Seared Golden Paneer" data-price="100" data-cal="260" data-icon="fa-cheese">
+                  <i class="fa-solid fa-cheese text-amber-700"></i> Seared Paneer <span class="text-stone-400 font-normal">(₹100 • 260 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-protein" data-name="Crispy Organic Tofu Cubes" data-price="90" data-cal="180" data-icon="fa-cubes">
+                  <i class="fa-solid fa-cubes text-amber-700"></i> Crispy Tofu <span class="text-stone-400 font-normal">(₹90 • 180 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-protein" data-name="Organic Poached Farm Egg" data-price="45" data-cal="140" data-icon="fa-egg">
+                  <i class="fa-solid fa-egg text-amber-700"></i> Poached Farm Egg <span class="text-stone-400 font-normal">(₹45 • 140 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. Sautéed Veggies & Mushrooms (Multi-Selectable) -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">3</span>
+                  Sautéed Veggies & Greens <span class="text-stone-400 font-normal text-xs">(Select multiple)</span>
+                </label>
+                <span class="text-[11px] text-emerald-800 font-semibold" id="meal-badge-veggies">2 selected</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="meal-veggies-container">
+                <button class="builder-option-pill meal-option-veggie selected" data-name="Chanterelle Mushrooms" data-price="45" data-cal="30" data-icon="fa-shield-halved">
+                  <i class="fa-solid fa-shield-halved text-emerald-700"></i> Chanterelle Mushrooms <span class="text-stone-400 font-normal">(+₹45 • 30 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-veggie selected" data-name="Sun-Dried Sicilian Tomatoes" data-price="35" data-cal="40" data-icon="fa-sun">
+                  <i class="fa-solid fa-sun text-emerald-700"></i> Sun-Dried Tomatoes <span class="text-stone-400 font-normal">(+₹35 • 40 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-veggie" data-name="Charred Garlic Broccolini" data-price="45" data-cal="45" data-icon="fa-seedling">
+                  <i class="fa-solid fa-seedling text-emerald-700"></i> Charred Broccolini <span class="text-stone-400 font-normal">(+₹45 • 45 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-veggie" data-name="Caramelized Cipollini Onions" data-price="35" data-cal="50" data-icon="fa-circle">
+                  <i class="fa-solid fa-circle text-emerald-700"></i> Caramelized Onions <span class="text-stone-400 font-normal">(+₹35 • 50 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-veggie" data-name="Fire-Roasted Bell Peppers" data-price="35" data-cal="35" data-icon="fa-pepper-hot">
+                  <i class="fa-solid fa-pepper-hot text-emerald-700"></i> Roasted Bell Peppers <span class="text-stone-400 font-normal">(+₹35 • 35 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-veggie" data-name="Baby Spinach Garlic Sauté" data-price="40" data-cal="25" data-icon="fa-leaf">
+                  <i class="fa-solid fa-leaf text-emerald-700"></i> Sautéed Spinach <span class="text-stone-400 font-normal">(+₹40 • 25 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 4. Chef's Sauce & Reduction -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">4</span>
+                  Select Chef's Sauce & Simmer
+                </label>
+                <span class="text-[11px] text-amber-800 font-semibold" id="meal-badge-sauce">Creamy Alfredo</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="meal-sauces-container">
+                <button class="builder-option-pill meal-option-sauce selected" data-name="Creamy White Truffle Alfredo" data-price="55" data-cal="180" data-icon="fa-bottle-droplet">
+                  <i class="fa-solid fa-bottle-droplet text-amber-800"></i> Truffle Alfredo <span class="text-stone-400 font-normal">(₹55 • 180 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-sauce" data-name="San Marzano Tomato Basil" data-price="40" data-cal="90" data-icon="fa-apple-whole">
+                  <i class="fa-solid fa-apple-whole text-amber-800"></i> Tomato Basil Pomodoro <span class="text-stone-400 font-normal">(₹40 • 90 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-sauce" data-name="Artisanal Basil Pesto" data-price="50" data-cal="160" data-icon="fa-mortar-pestle">
+                  <i class="fa-solid fa-mortar-pestle text-amber-800"></i> Basil Pine-Nut Pesto <span class="text-stone-400 font-normal">(₹50 • 160 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-sauce" data-name="Spicy Calabrian Chili Butter" data-price="45" data-cal="140" data-icon="fa-fire">
+                  <i class="fa-solid fa-fire text-amber-800"></i> Calabrian Chili Butter <span class="text-stone-400 font-normal">(₹45 • 140 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-sauce" data-name="Lemon Herb Garlic Reduction" data-price="40" data-cal="110" data-icon="fa-lemon">
+                  <i class="fa-solid fa-lemon text-amber-800"></i> Garlic Lemon Reduction <span class="text-stone-400 font-normal">(₹40 • 110 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 5. Artisanal Garnishes & Crunch (Multi-Selectable) -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">5</span>
+                  Finishing Garnishes & Crunch <span class="text-stone-400 font-normal text-xs">(Select multiple)</span>
+                </label>
+                <span class="text-[11px] text-purple-800 font-semibold" id="meal-badge-extras">1 selected</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="meal-extras-container">
+                <button class="builder-option-pill meal-option-extra selected" data-name="Aged Parmesan Shavings" data-price="35" data-cal="60" data-icon="fa-cheese">
+                  <i class="fa-solid fa-cheese text-purple-700"></i> 24-Mo Parmesan <span class="text-stone-400 font-normal">(+₹35 • 60 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-extra" data-name="Toasted Pine Nuts" data-price="40" data-cal="70" data-icon="fa-cubes-stacked">
+                  <i class="fa-solid fa-cubes-stacked text-purple-700"></i> Toasted Pine Nuts <span class="text-stone-400 font-normal">(+₹40 • 70 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-extra" data-name="Crispy Fried Shallots" data-price="25" data-cal="45" data-icon="fa-sparkles">
+                  <i class="fa-solid fa-wand-magic text-purple-700"></i> Crispy Shallots <span class="text-stone-400 font-normal">(+₹25 • 45 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-extra" data-name="White Truffle Oil Drizzle" data-price="50" data-cal="50" data-icon="fa-droplet">
+                  <i class="fa-solid fa-droplet text-purple-700"></i> White Truffle Oil <span class="text-stone-400 font-normal">(+₹50 • 50 kcal)</span>
+                </button>
+                <button class="builder-option-pill meal-option-extra" data-name="Fresh Micro-Basil" data-price="20" data-cal="5" data-icon="fa-leaf">
+                  <i class="fa-solid fa-leaf text-purple-700"></i> Micro-Basil <span class="text-stone-400 font-normal">(+₹20 • 5 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 6. Spice Heat Level -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+              <div>
+                <label class="font-serif text-sm font-bold text-stone-900 block">Spice / Heat Level</label>
+                <span class="text-[11px] text-stone-500">Adjust the kitchen's chili preparation</span>
+              </div>
+              <div class="flex gap-2">
+                <button class="builder-option-pill meal-option-spice selected" data-name="Mild">
+                  <i class="fa-solid fa-leaf text-emerald-600"></i> Mild
+                </button>
+                <button class="builder-option-pill meal-option-spice" data-name="Medium">
+                  <i class="fa-solid fa-pepper-hot text-amber-600"></i> Medium
+                </button>
+                <button class="builder-option-pill meal-option-spice" data-name="Fiery Hot">
+                  <i class="fa-solid fa-fire text-red-600"></i> Fiery
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. VISUAL GRAND PLATE CANVAS -->
+      <section id="builder-section-plate" class="rosa-card p-6 md:p-10">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="editorial-badge mb-2"><i class="fa-solid fa-plate-wheat"></i> Interactive Culinary Studio</span>
+          <h3 class="font-serif text-3xl md:text-4xl font-semibold text-stone-900 mb-2">3. Create Your Own Grand Plate</h3>
+          <p class="text-xs md:text-sm text-stone-600">
+            Curate a complete 6-part gourmet dining composition. Select your main course, artisanal side, farm-fresh greens, chef's reduction, beverage pairing, and dessert with real-time visual plate feedback.
+          </p>
+        </div>
+
+        <!-- Chef Curated Preset Shortcuts -->
+        <div class="mb-10 bg-stone-50/80 p-4 rounded-2xl border border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2 text-stone-700 font-semibold">
+            <i class="fa-solid fa-wand-magic-sparkles text-amber-700"></i>
+            <span>Chef's Signature Presets:</span>
+          </div>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50 border border-stone-300 hover:border-amber-700 text-stone-800 font-medium transition text-[11px]" onclick="Builders.loadPlatePreset('tuscan')">
+              🍗 Tuscan Classic
+            </button>
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50 border border-stone-300 hover:border-amber-700 text-stone-800 font-medium transition text-[11px]" onclick="Builders.loadPlatePreset('salmon')">
+              🐟 Atlantic Catch
+            </button>
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50 border border-stone-300 hover:border-amber-700 text-stone-800 font-medium transition text-[11px]" onclick="Builders.loadPlatePreset('truffle')">
+              🍝 Truffle Rigatoni
+            </button>
+            <button type="button" class="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50 border border-stone-300 hover:border-amber-700 text-stone-800 font-medium transition text-[11px]" onclick="Builders.loadPlatePreset('garden')">
+              🌱 Plant Garden
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Interactive Visual Top-Down Plate Visualizer (Sticky on desktop) -->
+          <div class="lg:col-span-5 text-center bg-stone-50 p-6 rounded-3xl border border-stone-200 lg:sticky lg:top-24 shadow-inner">
+            <span class="text-[10px] uppercase font-bold text-amber-800 tracking-wider block mb-3">Live Top-Down Visualizer</span>
+            
+            <div class="plate-canvas-wrapper mb-6">
+              <div id="plate-slot-main" class="plate-item-slot slot-main" title="Main Course"><i class="fa-solid fa-drumstick-bite"></i> Tuscan Grilled Chicken</div>
+              <div id="plate-slot-side" class="plate-item-slot slot-side" title="Side Dish"><i class="fa-solid fa-bowl-food"></i> Roasted Potatoes</div>
+              <div id="plate-slot-salad" class="plate-item-slot slot-salad" title="Fresh Salad"><i class="fa-solid fa-seedling"></i> Arugula Salad</div>
+              <div id="plate-slot-sauce" class="plate-item-slot slot-sauce" title="Signature Drizzle"><i class="fa-solid fa-bottle-droplet"></i> Pesto Reduction</div>
+              <div id="plate-slot-drink" class="plate-item-slot slot-drink" title="Pairing Beverage"><i class="fa-solid fa-glass-water"></i> Sparkling Tonic</div>
+              <div id="plate-slot-dessert" class="plate-item-slot slot-dessert" title="Dessert Treat"><i class="fa-solid fa-cookie"></i> Chocolate Tart</div>
+            </div>
+
+            <div id="plate-summary-box" class="text-left bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <!-- Rendered by builders.js -->
+            </div>
+          </div>
+
+          <!-- Step-by-Step Option Selectors -->
+          <div class="lg:col-span-7 space-y-6 text-xs">
+            <!-- 1. Main Course -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">1</span>
+                  Select Gourmet Main Entrée
+                </label>
+                <span class="text-[11px] text-amber-800 font-semibold" id="plate-badge-main">Tuscan Chicken</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="plate-mains-container">
+                <button class="builder-option-pill plate-option-main selected" data-name="Tuscan Grilled Chicken" data-price="250" data-cal="320" data-icon="fa-drumstick-bite">
+                  <i class="fa-solid fa-drumstick-bite text-amber-700"></i> Tuscan Herb Grilled Chicken <span class="text-stone-400 font-normal">(₹250 • 320 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-main" data-name="Pan-Seared Salmon Fillet" data-price="340" data-cal="380" data-icon="fa-fish">
+                  <i class="fa-solid fa-fish text-amber-700"></i> Pan-Seared Atlantic Salmon <span class="text-stone-400 font-normal">(₹340 • 380 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-main" data-name="Truffle Mushroom Rigatoni" data-price="280" data-cal="290" data-icon="fa-wheat-awn">
+                  <i class="fa-solid fa-wheat-awn text-amber-700"></i> Truffle Wild Rigatoni <span class="text-stone-400 font-normal">(₹280 • 290 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-main" data-name="Slow-Braised Prime Short Rib" data-price="380" data-cal="420" data-icon="fa-bacon">
+                  <i class="fa-solid fa-bacon text-amber-700"></i> Braised Prime Short Rib <span class="text-stone-400 font-normal">(₹380 • 420 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-main" data-name="Roasted Golden Cauliflower" data-price="220" data-cal="180" data-icon="fa-leaf">
+                  <i class="fa-solid fa-leaf text-amber-700"></i> Roasted Cauliflower Steak <span class="text-stone-400 font-normal">(₹220 • 180 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Artisanal Side -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">2</span>
+                  Select Artisanal Side
+                </label>
+                <span class="text-[11px] text-amber-800 font-semibold" id="plate-badge-side">Truffle Potatoes</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="plate-sides-container">
+                <button class="builder-option-pill plate-option-side selected" data-name="Truffle Roasted Potatoes" data-price="90" data-cal="210" data-icon="fa-bowl-food">
+                  <i class="fa-solid fa-bowl-food text-amber-700"></i> Truffle Roasted Potatoes <span class="text-stone-400 font-normal">(₹90 • 210 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-side" data-name="Rosemary Garlic Focaccia" data-price="70" data-cal="180" data-icon="fa-bread-slice">
+                  <i class="fa-solid fa-bread-slice text-amber-700"></i> Rosemary Garlic Focaccia <span class="text-stone-400 font-normal">(₹70 • 180 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-side" data-name="Creamy Saffron Polenta" data-price="85" data-cal="190" data-icon="fa-spoon">
+                  <i class="fa-solid fa-spoon text-amber-700"></i> Creamy Saffron Polenta <span class="text-stone-400 font-normal">(₹85 • 190 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-side" data-name="Crispy Sweet Potato Wedges" data-price="80" data-cal="160" data-icon="fa-carrot">
+                  <i class="fa-solid fa-carrot text-amber-700"></i> Sweet Potato Wedges <span class="text-stone-400 font-normal">(₹80 • 160 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-side" data-name="French Butter Haricots Verts" data-price="75" data-cal="60" data-icon="fa-seedling">
+                  <i class="fa-solid fa-seedling text-amber-700"></i> French Haricots Verts <span class="text-stone-400 font-normal">(₹75 • 60 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. Fresh Farm Greens -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">3</span>
+                  Select Fresh Farm Salad
+                </label>
+                <span class="text-[11px] text-amber-800 font-semibold" id="plate-badge-salad">Arugula & Parmesan</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="plate-salads-container">
+                <button class="builder-option-pill plate-option-salad selected" data-name="Wild Arugula & Parmesan" data-price="75" data-cal="90" data-icon="fa-seedling">
+                  <i class="fa-solid fa-seedling text-emerald-700"></i> Wild Arugula & Parmesan <span class="text-stone-400 font-normal">(₹75 • 90 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-salad" data-name="Heirloom Caprese & Basil" data-price="95" data-cal="130" data-icon="fa-apple-whole">
+                  <i class="fa-solid fa-apple-whole text-emerald-700"></i> Heirloom Caprese & Basil <span class="text-stone-400 font-normal">(₹95 • 130 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-salad" data-name="Lemon Herb Quinoa" data-price="85" data-cal="140" data-icon="fa-bowl-rice">
+                  <i class="fa-solid fa-bowl-rice text-emerald-700"></i> Mediterranean Quinoa <span class="text-stone-400 font-normal">(₹85 • 140 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-salad" data-name="Citrus Fennel Slaw" data-price="75" data-cal="70" data-icon="fa-lemon">
+                  <i class="fa-solid fa-lemon text-emerald-700"></i> Citrus Shaved Fennel Slaw <span class="text-stone-400 font-normal">(₹75 • 70 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 4. Signature Sauce / Reduction -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">4</span>
+                  Select Chef's Sauce & Reduction
+                </label>
+                <span class="text-[11px] text-amber-800 font-semibold" id="plate-badge-sauce">Pesto Reduction</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="plate-sauces-container">
+                <button class="builder-option-pill plate-option-sauce selected" data-name="Artisanal Pesto Reduction" data-price="45" data-cal="120" data-icon="fa-bottle-droplet">
+                  <i class="fa-solid fa-bottle-droplet text-amber-800"></i> Basil Pesto Reduction <span class="text-stone-400 font-normal">(₹45 • 120 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-sauce" data-name="Aged Modena Balsamic Glaze" data-price="35" data-cal="60" data-icon="fa-wine-bottle">
+                  <i class="fa-solid fa-wine-bottle text-amber-800"></i> Aged Balsamic Glaze <span class="text-stone-400 font-normal">(₹35 • 60 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-sauce" data-name="Truffle Herb Aioli" data-price="45" data-cal="140" data-icon="fa-jar">
+                  <i class="fa-solid fa-jar text-amber-800"></i> Truffle Herb Aioli <span class="text-stone-400 font-normal">(₹45 • 140 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-sauce" data-name="Chimichurri Herb Butter" data-price="45" data-cal="110" data-icon="fa-cubes-stacked">
+                  <i class="fa-solid fa-cubes-stacked text-amber-800"></i> Chimichurri Butter <span class="text-stone-400 font-normal">(₹45 • 110 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-sauce" data-name="Roasted Garlic Creme" data-price="40" data-cal="95" data-icon="fa-shield-heart">
+                  <i class="fa-solid fa-shield-heart text-amber-800"></i> Roasted Garlic Crème <span class="text-stone-400 font-normal">(₹40 • 95 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 5. Pairing Beverage -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">5</span>
+                  Select Pairing Café Beverage
+                </label>
+                <span class="text-[11px] text-amber-800 font-semibold" id="plate-badge-drink">Sparkling Tonic</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="plate-drinks-container">
+                <button class="builder-option-pill plate-option-drink selected" data-name="Sparkling Citrus Tonic" data-price="75" data-cal="45" data-icon="fa-glass-water">
+                  <i class="fa-solid fa-glass-water text-indigo-700"></i> Sparkling Citrus Tonic <span class="text-stone-400 font-normal">(₹75 • 45 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-drink" data-name="Single-Origin Cold Brew" data-price="95" data-cal="15" data-icon="fa-mug-hot">
+                  <i class="fa-solid fa-mug-hot text-indigo-700"></i> Artisanal Cold Brew <span class="text-stone-400 font-normal">(₹95 • 15 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-drink" data-name="Hibiscus Rosehip Berry Spritz" data-price="85" data-cal="40" data-icon="fa-martini-glass-citrus">
+                  <i class="fa-solid fa-martini-glass-citrus text-indigo-700"></i> Hibiscus Berry Spritz <span class="text-stone-400 font-normal">(₹85 • 40 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-drink" data-name="Iced Peach White Tea" data-price="75" data-cal="30" data-icon="fa-leaf">
+                  <i class="fa-solid fa-leaf text-indigo-700"></i> Iced Peach White Tea <span class="text-stone-400 font-normal">(₹75 • 30 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-drink" data-name="Classic Antiquity Lemonade" data-price="65" data-cal="70" data-icon="fa-lemon">
+                  <i class="fa-solid fa-lemon text-indigo-700"></i> Antiquity Mint Lemonade <span class="text-stone-400 font-normal">(₹65 • 70 kcal)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 6. Dessert Finish -->
+            <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+              <div class="flex justify-between items-center mb-3">
+                <label class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-stone-900 text-amber-400 flex items-center justify-center text-xs">6</span>
+                  Select Handcrafted Dessert
+                </label>
+                <span class="text-[11px] text-amber-800 font-semibold" id="plate-badge-dessert">Chocolate Tart</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="plate-desserts-container">
+                <button class="builder-option-pill plate-option-dessert selected" data-name="Mini Dark Chocolate Tart" data-price="85" data-cal="180" data-icon="fa-cookie">
+                  <i class="fa-solid fa-cookie text-amber-700"></i> Mini Dark Chocolate Tart <span class="text-stone-400 font-normal">(₹85 • 180 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-dessert" data-name="Pistachio Cardamom Cannoli" data-price="95" data-cal="210" data-icon="fa-cookie-bite">
+                  <i class="fa-solid fa-cookie-bite text-amber-700"></i> Pistachio Cannoli <span class="text-stone-400 font-normal">(₹95 • 210 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-dessert" data-name="Artisanal Macaron Duo" data-price="80" data-cal="140" data-icon="fa-circle-dot">
+                  <i class="fa-solid fa-circle-dot text-amber-700"></i> French Macaron Duo <span class="text-stone-400 font-normal">(₹80 • 140 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-dessert" data-name="Lemon Ricotta Tartlet" data-price="85" data-cal="160" data-icon="fa-sun">
+                  <i class="fa-solid fa-sun text-amber-700"></i> Lemon Ricotta Tartlet <span class="text-stone-400 font-normal">(₹85 • 160 kcal)</span>
+                </button>
+                <button class="builder-option-pill plate-option-dessert" data-name="No Dessert" data-price="0.00" data-cal="0" data-icon="fa-ban">
+                  <i class="fa-solid fa-ban text-stone-400"></i> No Dessert <span class="text-stone-400 font-normal">(₹0.00 • 0 kcal)</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+
+  <!-- ==================== VIEW 4: FLAVOUR QUIZ ==================== -->
+  <main id="view-quiz" class="app-view hidden py-24 px-6 md:px-12">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-8">
+        <span class="section-subtitle">Sensory Profile Engine</span>
+        <h1 class="section-title mt-2">Discover Your Flavour Identity</h1>
+      </div>
+
+      <div id="quiz-card-container" class="quiz-card">
+        <!-- Rendered dynamically by quiz.js -->
+      </div>
+    </div>
+  </main>
+
+
+  <!-- ==================== VIEW 5: DIGITAL LOYALTY PASS ==================== -->
+  <main id="view-loyalty" class="app-view hidden py-24 px-6 md:px-12">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-8">
+        <span class="section-subtitle">Patron Recognition</span>
+        <h1 class="section-title mt-2">Digital Stamp & Loyalty Card</h1>
+      </div>
+
+      <div id="loyalty-card-box">
+        <!-- Rendered dynamically by loyalty.js -->
+      </div>
+    </div>
+  </main>
+
+
+  <!-- ==================== VIEW 6: ABOUT ==================== -->
+  <main id="view-about" class="app-view hidden py-24 px-6 md:px-12">
+    <div class="max-w-4xl mx-auto space-y-12">
+      <div class="text-center">
+        <span class="section-subtitle">Our Heritage</span>
+        <h1 class="section-title mt-2">Craftsmanship & Atmosphere</h1>
+      </div>
+
+      <div class="rosa-card p-8 md:p-12 space-y-6 text-stone-700 leading-relaxed text-sm">
+        <p class="text-base font-serif text-stone-900 leading-snug italic">
+          "Antiquity Cafe was born from a passion for single-origin heirloom coffee roasting, artisanal baking, bronze-cut gourmet plates, and warm hospitality."
+        </p>
+        <p>
+          Every bean served in our cafe is harvested from sustainable high-altitude micro-lots in Ethiopia, Colombia, and Guatemala. Roasted in small batches, our espresso extractions bring out floral aromatics, natural sweetness, and rich crema.
+        </p>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- ==================== VIEW 7: CONTACT & HOURS ==================== -->
+  <main id="view-contact" class="app-view hidden py-24 px-6 md:px-12">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="section-subtitle">Visit Us</span>
+        <h1 class="section-title mt-2">Location & Opening Hours</h1>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="rosa-card p-8">
+          <h3 class="font-serif text-2xl font-bold text-stone-900 mb-4">Opening Hours</h3>
+          <ul class="space-y-3 text-xs text-stone-700">
+            <li class="flex justify-between border-b border-stone-100 pb-2">
+              <span class="font-semibold">Monday – Friday</span>
+              <span>7:00 AM – 10:00 PM</span>
+            </li>
+            <li class="flex justify-between border-b border-stone-100 pb-2">
+              <span class="font-semibold">Saturday & Sunday</span>
+              <span>8:00 AM – 10:00 PM</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="font-semibold">Kitchen Orders Close</span>
+              <span>9:30 PM Daily</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="rosa-card p-8">
+          <h3 class="font-serif text-2xl font-bold text-stone-900 mb-4">Address & Inquiries</h3>
+          <p class="text-xs text-stone-600 mb-2"><i class="fa-solid fa-location-dot text-amber-800 mr-2"></i> 42 Artisanal Boulevard, Gourmet Quarter</p>
+          <p class="text-xs text-stone-600 mb-2"><i class="fa-solid fa-phone text-amber-800 mr-2"></i> +1 (555) 019-2834</p>
+          <p class="text-xs text-stone-600"><i class="fa-solid fa-envelope text-amber-800 mr-2"></i> concierge@rosa.cafe</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- ==================== VIEW 8: CUSTOMER ACCOUNT ==================== -->
+  <main id="view-account" class="app-view hidden py-24 px-6 md:px-12">
+    <div id="account-container">
+      <!-- Rendered dynamically by main.js -->
+    </div>
+  </main>
+
+
+  <!-- ==================== VIEW 9: ORDER TRACKING ==================== -->
+  <main id="view-order-tracking" class="app-view hidden py-24 px-6 md:px-12">
+    <div id="order-tracking-content">
+      <!-- Rendered dynamically by main.js -->
+    </div>
+  </main>
+
+
+  <!-- ==================== VIEW 10: ADMIN PANEL ==================== -->
+  <main id="view-admin" class="app-view hidden pt-20">
+    <div class="flex flex-col md:flex-row min-h-screen">
+      <div id="admin-sidebar-nav" class="admin-sidebar">
+        <!-- Rendered by admin.js -->
+      </div>
+      <div id="admin-content-area" class="flex-1 p-6 md:p-10 bg-stone-50">
+        <!-- Rendered by admin.js -->
+      </div>
+    </div>
+  </main>
+
+
+  <!-- ==================== GLOBAL FOOTER ==================== -->
+  <footer class="bg-stone-950 text-stone-300 pt-16 pb-12 px-6 md:px-12 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-stone-800 text-xs">
+      <!-- Brand Heritage -->
+      <div class="lg:col-span-2 space-y-4">
+        <a href="#" class="flex items-center gap-2" data-view-trigger="home">
+          <i class="fa-solid fa-mug-hot text-2xl text-amber-500"></i>
+          <span class="font-serif text-2xl font-bold text-white tracking-tight">Antiquity <span class="text-amber-500 text-lg italic">Cafe</span></span>
+        </a>
+        <p class="text-stone-400 text-xs leading-relaxed max-w-sm">
+          An artisanal café & roastery dedicated to single-origin micro-lots, custom barista creations, bronze-cut culinary dishes, and seamless digital table ordering.
+        </p>
+        <div class="flex items-center gap-3 pt-2">
+          <a href="#" class="w-8 h-8 rounded-full bg-stone-800 hover:bg-amber-700 text-stone-300 hover:text-white flex items-center justify-center transition-colors">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-stone-800 hover:bg-amber-700 text-stone-300 hover:text-white flex items-center justify-center transition-colors">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-stone-800 hover:bg-amber-700 text-stone-300 hover:text-white flex items-center justify-center transition-colors">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-stone-800 hover:bg-amber-700 text-stone-300 hover:text-white flex items-center justify-center transition-colors">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="space-y-3">
+        <h5 class="font-serif text-white font-bold text-sm uppercase tracking-wider">Explore</h5>
+        <ul class="space-y-2 text-stone-400">
+          <li><a href="#" class="hover:text-amber-400 transition-colors" data-view-trigger="home">Home Atmosphere</a></li>
+          <li><a href="#" class="hover:text-amber-400 transition-colors" data-view-trigger="menu">Digital Café Menu</a></li>
+          <li><a href="#" class="hover:text-amber-400 transition-colors" data-view-trigger="builders">Custom Brew & Plate</a></li>
+          <li><a href="#" class="hover:text-amber-400 transition-colors" data-view-trigger="quiz">Flavour Profile Quiz</a></li>
+          <li><a href="#" class="hover:text-amber-400 transition-colors" data-view-trigger="loyalty">Digital Stamp Pass</a></li>
+        </ul>
+      </div>
+
+      <!-- Guest Services & Info -->
+      <div class="space-y-3">
+        <h5 class="font-serif text-white font-bold text-sm uppercase tracking-wider">Services</h5>
+        <ul class="space-y-2 text-stone-400">
+          <li><a href="#" class="hover:text-amber-400 transition-colors" data-view-trigger="about">Café Heritage & Roasting</a></li>
+          <li><a href="#" class="hover:text-amber-400 transition-colors" data-view-trigger="contact">Hours & Directions</a></li>
+          <li><a href="#" class="hover:text-amber-400 transition-colors" data-view-trigger="account">Order History & Stamps</a></li>
+          <li><a href="#" class="hover:text-amber-400 transition-colors" onclick="document.getElementById('chatbot-widget-container').classList.add('open')">Antiquity AI Sommelier</a></li>
+          <li><a href="#" class="hover:text-amber-400 transition-colors" data-view-trigger="admin">Admin Operations</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter & Coffee Club -->
+      <div class="space-y-3">
+        <h5 class="font-serif text-white font-bold text-sm uppercase tracking-wider">Roastery Club</h5>
+        <p class="text-stone-400 text-xs leading-relaxed">Subscribe for private tasting events, secret seasonal micro-lots, and member-only roast drops.</p>
+        <form id="home-newsletter-form" class="space-y-2">
+          <input type="email" id="home-newsletter-email" required placeholder="Enter your email" class="w-full p-2.5 rounded-lg bg-[#1C1814] border border-stone-700 text-[#F6EFE9] text-xs placeholder-stone-400 focus:outline-none focus:border-amber-500" />
+          <button type="submit" class="btn-rosa text-xs py-2.5 w-full shadow-md font-bold">
+            Join Connoisseur Circle
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-stone-400 text-[11px]">
+      <p>&copy; 2026 Antiquity Cafe & Artisanal Roastery. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <span>128 Luxury Ave • Roastery District</span>
+        <span>•</span>
+        <span>Table Service & Contactless Takeaway</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==================== CART DRAWER ==================== -->
+  <div id="cart-overlay" class="drawer-overlay"></div>
+  <div id="cart-drawer" class="mobile-nav-drawer bg-[#1C1814] text-[#F6EFE9] border-l border-stone-800">
+    <div class="flex justify-between items-center pb-4 border-b border-stone-800">
+      <h3 class="font-serif text-2xl font-bold text-[#F6EFE9]">Your Selection</h3>
+      <button id="cart-close-btn" class="text-stone-400 hover:text-white text-2xl">&times;</button>
+    </div>
+
+    <div id="cart-drawer-list" class="flex-1 overflow-y-auto my-4 space-y-3">
+      <!-- Rendered by cart.js -->
+    </div>
+
+    <div class="pt-4 border-t border-stone-800 space-y-3 text-xs">
+      <div class="flex gap-2">
+        <input type="text" id="coupon-input-field" placeholder="Coupon Code (e.g. WELCOME10)" class="w-full p-2 rounded-lg border border-stone-700 bg-[#241F1A] text-[#F6EFE9] text-xs" />
+        <button id="apply-coupon-btn" class="btn-rosa text-xs py-2 px-3 shadow-sm">Apply</button>
+      </div>
+
+      <div class="space-y-1 text-stone-300">
+        <div class="flex justify-between"><span>Subtotal</span><span id="cart-drawer-subtotal">₹0.00</span></div>
+        <div class="flex justify-between text-emerald-400"><span>Discount</span><span id="cart-drawer-discount">-₹0.00</span></div>
+        <div class="flex justify-between font-bold text-[#F6EFE9] text-sm pt-2 border-t border-stone-800">
+          <span>Total</span><span id="cart-drawer-total" class="text-amber-400">₹0.00</span>
+        </div>
+      </div>
+
+      <!-- Checkout Trigger -->
+      <button id="cart-drawer-checkout-btn" class="btn-rosa text-xs w-full py-3.5 mt-2 flex items-center justify-center gap-2 shadow-lg font-bold" onclick="Cart.openCheckout()">
+        <i class="fa-solid fa-lock text-amber-300"></i>
+        <span>Proceed to Secure Checkout</span>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ==================== CHECKOUT MODAL ==================== -->
+  <div id="checkout-modal" class="modal-overlay">
+    <div class="modal-container p-6 md:p-8 max-w-xl max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center pb-3 mb-4 border-b border-stone-100">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-base shadow-inner">
+            <i class="fa-solid fa-bag-shopping"></i>
+          </div>
+          <div>
+            <h3 class="font-serif text-2xl font-bold text-stone-900 leading-tight">Artisanal Checkout</h3>
+            <p class="text-[11px] text-stone-400">Complete your order with secure payment & loyalty stamps</p>
+          </div>
+        </div>
+        <button class="text-stone-400 hover:text-stone-700 text-2xl p-1 leading-none focus:outline-none" onclick="document.getElementById('checkout-modal').classList.remove('open')">&times;</button>
+      </div>
+
+      <!-- Patron Authentication Status Banner -->
+      <div id="checkout-auth-banner" class="mb-5 p-3.5 rounded-2xl bg-amber-50/80 border border-amber-200/80 text-xs flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="w-7 h-7 rounded-full bg-amber-700 text-white flex items-center justify-center text-xs flex-shrink-0">
+            <i class="fa-solid fa-user-check"></i>
+          </div>
+          <div class="min-w-0">
+            <p class="text-[11px] text-stone-500">Ordering as Authenticated Patron</p>
+            <p class="font-bold text-stone-900 truncate" id="checkout-user-display">Sophia Laurent (sophia@example.com)</p>
+          </div>
+        </div>
+        <span class="editorial-badge text-[10px] py-1 px-2.5 flex-shrink-0" id="checkout-stamp-incentive">
+          <i class="fa-solid fa-stamp text-amber-700"></i> +1 Stamp on Order
+        </span>
+      </div>
+
+      <!-- Unauthenticated Guard Alert (Hidden when logged in) -->
+      <div id="checkout-login-guard" class="hidden mb-5 p-4 rounded-2xl bg-red-50 border border-red-200 text-xs text-red-900">
+        <div class="flex items-start gap-3">
+          <i class="fa-solid fa-triangle-exclamation text-red-600 text-base mt-0.5"></i>
+          <div class="flex-1">
+            <h4 class="font-bold text-red-900 mb-0.5">Sign In Required to Place Order</h4>
+            <p class="text-[11px] text-red-700 mb-3">To ensure your loyalty stamps, order tracking, and receipt history are saved securely, you must sign in or create an account before completing checkout.</p>
+            <button type="button" id="btn-checkout-login-redirect" class="btn-rosa text-xs py-2 px-4 shadow-sm inline-flex items-center gap-1.5">
+              <i class="fa-solid fa-right-to-bracket"></i> Sign In / Create Account
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkout Order Items Summary Accordion -->
+      <div class="mb-5 rounded-2xl bg-stone-50 border border-stone-200 overflow-hidden text-xs">
+        <div class="p-3.5 flex justify-between items-center cursor-pointer hover:bg-stone-100/70 transition" onclick="document.getElementById('checkout-items-preview').classList.toggle('hidden')">
+          <span class="font-bold text-stone-800 flex items-center gap-2">
+            <i class="fa-solid fa-receipt text-amber-800"></i>
+            <span>Order Summary (<span id="checkout-items-count">0</span> items)</span>
+          </span>
+          <div class="flex items-center gap-2">
+            <span class="font-serif font-bold text-sm text-stone-900" id="checkout-summary-total">₹0.00</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-stone-400"></i>
+          </div>
+        </div>
+        <div id="checkout-items-preview" class="p-3.5 pt-0 border-t border-stone-200/60 space-y-2">
+          <div id="checkout-items-list" class="space-y-1.5 max-h-36 overflow-y-auto pr-1"></div>
+          <div class="pt-2 border-t border-stone-200 text-stone-600 space-y-1 text-[11px]">
+            <div class="flex justify-between"><span>Subtotal:</span><span id="checkout-subtotal-val">₹0.00</span></div>
+            <div class="flex justify-between text-emerald-700"><span>Applied Discount:</span><span id="checkout-discount-val">-₹0.00</span></div>
+            <div class="flex justify-between text-stone-500"><span>Service Tax & Packaging:</span><span id="checkout-tax-val">₹0.00</span></div>
+            <div class="flex justify-between text-stone-500"><span>Delivery Fee:</span><span id="checkout-delivery-val">₹0.00</span></div>
+          </div>
+        </div>
+      </div>
+
+      <form id="checkout-form" class="space-y-4 text-xs">
+        <!-- Contact & Fulfillment -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block font-bold text-stone-800 mb-1">Full Name <span class="text-red-500">*</span></label>
+            <div class="relative">
+              <span class="absolute left-3 top-2.5 text-stone-400"><i class="fa-solid fa-user text-[11px]"></i></span>
+              <input type="text" id="checkout-name" required placeholder="Sophia Laurent" class="w-full pl-8 pr-3 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-700 text-xs" />
+            </div>
+          </div>
+          <div>
+            <label class="block font-bold text-stone-800 mb-1">Phone Number <span class="text-red-500">*</span></label>
+            <div class="relative">
+              <span class="absolute left-3 top-2.5 text-stone-400"><i class="fa-solid fa-phone text-[11px]"></i></span>
+              <input type="tel" id="checkout-phone" required placeholder="+1 (555) 234-5678" class="w-full pl-8 pr-3 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-700 text-xs" />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-stone-800 mb-1">Email Address <span class="text-red-500">*</span></label>
+          <div class="relative">
+            <span class="absolute left-3 top-2.5 text-stone-400"><i class="fa-solid fa-envelope text-[11px]"></i></span>
+            <input type="email" id="checkout-email" required placeholder="sophia@example.com" class="w-full pl-8 pr-3 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-700 text-xs" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block font-bold text-stone-800 mb-1">Fulfillment Method</label>
+            <select id="checkout-type" class="w-full p-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-700 text-xs bg-white">
+              <option value="Delivery">Local Gourmet Delivery</option>
+              <option value="Takeaway">Counter Takeaway</option>
+              <option value="Dine-in">Dine-In Table Service</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-stone-800 mb-1" id="checkout-address-label">Delivery Address / Table # <span class="text-red-500">*</span></label>
+            <div class="relative">
+              <span class="absolute left-3 top-2.5 text-stone-400"><i class="fa-solid fa-location-dot text-[11px]"></i></span>
+              <input type="text" id="checkout-address" required placeholder="e.g. 742 Evergreen Terrace, Apt 4B" class="w-full pl-8 pr-3 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-700 text-xs" />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-stone-800 mb-1">Special Barista Note / Allergy Instructions (Optional)</label>
+          <input type="text" id="checkout-notes" placeholder="e.g. Extra hot oat milk, oat cortado on side, ring doorbell" class="w-full p-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-amber-700 text-xs" />
+        </div>
+
+        <!-- ==================== PAYMENT METHODS (MANDATORY TO COMPLETE ORDER) ==================== -->
+        <div class="pt-2">
+          <div class="flex items-center justify-between mb-2">
+            <label class="block font-bold text-[#FAF6F2] text-xs">Payment Method <span class="text-rose-400 font-normal">(Required to buy order)</span></label>
+            <span class="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full font-mono flex items-center gap-1">
+              <i class="fa-solid fa-lock text-[9px]"></i> 100% Secure Checkout
+            </span>
+          </div>
+
+          <div class="space-y-2.5" id="payment-options-container">
+            
+            <!-- Option 1: Razorpay Gateway (Default) -->
+            <label class="payment-method-card flex items-start gap-3 p-3.5 rounded-2xl border-2 border-amber-500 bg-amber-500/10 cursor-pointer transition hover:bg-amber-500/15">
+              <input type="radio" name="paymentMethod" value="Razorpay" checked class="mt-1 text-amber-500 focus:ring-amber-500">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-[#FAF6F2] text-xs flex items-center gap-1.5">
+                    <i class="fa-solid fa-bolt text-amber-400"></i> Razorpay Payment Gateway
+                  </span>
+                  <span class="text-[10px] bg-amber-500 text-stone-950 font-bold px-2 py-0.5 rounded-full">Recommended &bull; Multi-Gateway</span>
+                </div>
+                <p class="text-[11px] text-[#D8CCC0] mt-0.5 leading-snug">Pay via UPI (PhonePe, Paytm, BHIM), NetBanking, Wallets, and international cards.</p>
+                <div class="flex items-center gap-2 mt-2 text-[10px] text-[#B5A596]">
+                  <span class="px-1.5 py-0.5 bg-[#241E19] rounded border border-[#382F26] font-semibold text-purple-400">PhonePe</span>
+                  <span class="px-1.5 py-0.5 bg-[#241E19] rounded border border-[#382F26] font-semibold text-sky-400">Paytm</span>
+                  <span class="px-1.5 py-0.5 bg-[#241E19] rounded border border-[#382F26] font-semibold text-[#FAF6F2]"><i class="fa-brands fa-cc-visa text-xs text-blue-400"></i> Cards</span>
+                  <span class="px-1.5 py-0.5 bg-[#241E19] rounded border border-[#382F26] font-semibold text-emerald-400">NetBanking</span>
+                </div>
+              </div>
+            </label>
+
+            <!-- Option 2: Credit / Debit Card Direct -->
+            <label class="payment-method-card flex items-start gap-3 p-3.5 rounded-2xl border border-[#382F26] bg-[#1C1814] cursor-pointer transition hover:bg-[#241E19]">
+              <input type="radio" name="paymentMethod" value="Credit/Debit Card" class="mt-1 text-amber-500 focus:ring-amber-500">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-[#FAF6F2] text-xs flex items-center gap-1.5">
+                    <i class="fa-solid fa-credit-card text-stone-400"></i> Credit / Debit Card
+                  </span>
+                  <span class="text-[10px] text-[#B5A596]">Visa, MC, Amex</span>
+                </div>
+                <p class="text-[11px] text-[#D8CCC0] mt-0.5">Secure direct card processing with 3D Secure verification.</p>
+              </div>
+            </label>
+
+            <!-- Option 3: Pay at Counter / Cash on Delivery -->
+            <label class="payment-method-card flex items-start gap-3 p-3.5 rounded-2xl border border-[#382F26] bg-[#1C1814] cursor-pointer transition hover:bg-[#241E19]">
+              <input type="radio" name="paymentMethod" value="Cash on Delivery / Counter" class="mt-1 text-amber-500 focus:ring-amber-500">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-[#FAF6F2] text-xs flex items-center gap-1.5">
+                    <i class="fa-solid fa-money-bill-wave text-amber-400"></i> Pay at Counter / Cash on Delivery
+                  </span>
+                  <span class="text-[10px] text-[#B5A596]">Cash / POS</span>
+                </div>
+                <p class="text-[11px] text-[#D8CCC0] mt-0.5">Pay upon pickup at our roastery counter or cash upon delivery.</p>
+              </div>
+            </label>
+
+          </div>
+        </div>
+
+        <button type="submit" id="checkout-submit-btn" class="btn-rosa text-xs w-full py-4 mt-2 shadow-xl flex items-center justify-center gap-2 font-bold tracking-wide">
+          <i class="fa-solid fa-bolt text-lg"></i>
+          <span id="checkout-submit-text">Pay with Razorpay & Complete Order</span>
+        </button>
+
+        <p class="text-[10px] text-[#B5A596] text-center flex items-center justify-center gap-1.5">
+          <i class="fa-solid fa-shield-halved text-emerald-400"></i> Payment Authorization Required &bull; 256-Bit Encrypted &bull; Live KDS
+        </p>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ==================== CUSTOMIZE MODAL ==================== -->
+  <div id="customize-modal" class="modal-overlay">
+    <div class="modal-container">
+      <div id="customize-modal-content"></div>
+    </div>
+  </div>
+
+
+  <!-- ==================== AI CAFE CHATBOT WIDGET ==================== -->
+  <button id="chatbot-trigger-btn" class="chatbot-trigger-btn" title="AI Cafe Assistant">
+    <i class="fa-solid fa-comments"></i>
+  </button>
+
+  <div id="chatbot-widget-container" class="chatbot-container">
+    <div class="chatbot-header">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xs">
+          A
+        </div>
+        <div>
+          <h4 class="font-serif font-bold text-sm">Antiquity AI Barista</h4>
+          <span class="text-[10px] text-amber-300 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> Online & Attentive</span>
+        </div>
+      </div>
+      <button id="chatbot-close-btn" class="text-stone-300 text-xl hover:text-white">&times;</button>
+    </div>
+
+    <div id="chatbot-messages-area" class="chat-messages-area">
+      <div class="chat-bubble bot">
+        Greetings! I am your Antiquity Cafe AI Barista. I can recommend coffee extractions, food pairings, check allergens, or assist with your custom meal creations!
+      </div>
+    </div>
+
+    <!-- Quick Reply Suggestions -->
+    <div class="p-2 bg-stone-100 flex gap-1.5 overflow-x-auto border-t border-stone-200">
+      <button class="quick-reply-chip chatbot-quick-chip" data-prompt="What coffee do you recommend?">Recommend Coffee</button>
+      <button class="quick-reply-chip chatbot-quick-chip" data-prompt="Show vegan options">Vegan Options</button>
+      <button class="quick-reply-chip chatbot-quick-chip" data-prompt="What are your opening hours?">Hours & Location</button>
+      <button class="quick-reply-chip chatbot-quick-chip" data-prompt="Tell me about loyalty stamps">Loyalty Stamps</button>
+    </div>
+
+    <div class="p-3 bg-white border-t border-stone-200 flex gap-2">
+      <input type="text" id="chatbot-input-field" placeholder="Ask Antiquity AI anything about our menu..." class="flex-1 p-2 rounded-lg border border-stone-300 text-xs focus:outline-none focus:border-amber-700" />
+      <button id="chatbot-send-btn" class="btn-rosa text-xs p-2.5">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- Razorpay Official Checkout SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <!-- Application Scripts -->
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>
