@@ -6,7 +6,7 @@
 
 This contains everything you need to run your app locally.
 
-View your app in AI Studio: https://ai.studio/apps/35899895-01fa-42a5-929c-e9a8e2bde51c
+View your app in AI Studio: https://antiquity-cafa.ai.studio
 
 ## Run Locally
 
