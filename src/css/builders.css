@@ -1,0 +1,544 @@
+/* Interactive Builders Styling */
+
+/* Custom Brew Animated Cup Preview */
+.coffee-cup-viewport {
+  width: 260px;
+  height: 290px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Scalable Cup Assembly */
+.coffee-cup-assembly {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  transform-origin: bottom center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Steam Animation */
+.coffee-steam-container {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.coffee-steam-particle {
+  width: 6px;
+  height: 30px;
+  background: rgba(180, 160, 140, 0.45);
+  border-radius: 50%;
+  filter: blur(2.5px);
+  animation: steamRise 2.4s infinite ease-out;
+}
+
+.coffee-steam-particle:nth-child(2) {
+  animation-delay: 0.7s;
+  height: 36px;
+}
+
+.coffee-steam-particle:nth-child(3) {
+  animation-delay: 1.4s;
+  height: 28px;
+}
+
+@keyframes steamRise {
+  0% { transform: translateY(0) scaleX(1); opacity: 0; }
+  35% { opacity: 0.75; }
+  100% { transform: translateY(-38px) scaleX(2.8); opacity: 0; }
+}
+
+/* Straw for Iced Drinks */
+.coffee-straw {
+  position: absolute;
+  top: -35px;
+  right: 28px;
+  width: 10px;
+  height: 140px;
+  background: repeating-linear-gradient(
+    45deg,
+    #D97706,
+    #D97706 6px,
+    #FFFBEB 6px,
+    #FFFBEB 12px
+  );
+  border-radius: 5px;
+  transform: rotate(18deg);
+  z-index: 15;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+/* Whipped Cream Mountain */
+.coffee-whipped-cream {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 36px;
+  z-index: 12;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+.whipped-cream-puff {
+  position: absolute;
+  background: #FFFDF9;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08), inset 0 -2px 4px rgba(230, 220, 200, 0.4);
+}
+
+.puff-1 { width: 48px; height: 32px; left: 10px; bottom: 0; }
+.puff-2 { width: 56px; height: 38px; left: 40px; bottom: 2px; }
+.puff-3 { width: 44px; height: 30px; right: 10px; bottom: 0; }
+.whipped-cream-top {
+  position: absolute;
+  width: 24px;
+  height: 20px;
+  background: #FFFDF9;
+  border-radius: 50% 50% 20% 20%;
+  left: 54px;
+  top: -4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+
+/* Main Cup Body */
+.coffee-cup-body {
+  width: 155px;
+  height: 195px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 5px solid #2A1810;
+  border-top: none;
+  border-bottom-left-radius: 46px;
+  border-bottom-right-radius: 46px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 32px rgba(42, 24, 16, 0.16), inset 0 -8px 16px rgba(0,0,0,0.06);
+  backdrop-filter: blur(5px);
+  transition: all 0.4s ease;
+  z-index: 5;
+}
+
+/* Glass Tumbler Mode for Iced Drinks */
+.coffee-cup-body.is-iced {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(220, 240, 255, 0.25) 100%);
+  border-color: rgba(140, 175, 200, 0.7);
+  box-shadow: 0 18px 36px rgba(30, 60, 90, 0.14), inset 0 0 12px rgba(255, 255, 255, 0.6);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Gloss & Rim Reflections */
+.cup-gloss-reflection {
+  position: absolute;
+  top: 0;
+  left: 8px;
+  width: 14px;
+  height: 85%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.05) 100%);
+  border-radius: 10px;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.cup-rim-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0.2), rgba(255,255,255,0.8));
+  z-index: 9;
+}
+
+/* Mug Handle */
+.coffee-cup-handle {
+  position: absolute;
+  right: -32px;
+  top: 60px;
+  width: 44px;
+  height: 80px;
+  border: 5px solid #2A1810;
+  border-left: none;
+  border-radius: 0 32px 32px 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 2;
+  box-shadow: 3px 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Saucer at Base */
+.coffee-cup-saucer {
+  width: 190px;
+  height: 14px;
+  background: linear-gradient(180deg, #E6DEC8 0%, #C8BEA5 100%);
+  border: 2px solid #2A1810;
+  border-radius: 50%;
+  margin-top: -6px;
+  z-index: 1;
+  box-shadow: 0 8px 18px rgba(42, 24, 16, 0.2);
+  transition: all 0.4s ease;
+}
+
+.coffee-cup-body.is-iced ~ .coffee-cup-saucer {
+  background: linear-gradient(180deg, #C29B72 0%, #8C6239 100%);
+  border-color: #5C3D1E;
+  width: 170px;
+  height: 10px;
+}
+
+/* Liquid Fill Layer */
+.coffee-liquid-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  background: #3D2314;
+  transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+}
+
+.liquid-crema-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: linear-gradient(180deg, rgba(200, 140, 80, 0.35) 0%, transparent 100%);
+}
+
+/* Milk Foam Layer */
+.coffee-milk-foam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: #FFF8E7;
+  border-radius: 50% 50% 0 0;
+  transition: all 0.4s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+/* Barista Latte Art Badge */
+.latte-art-badge {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Confectionery Topping Drizzle */
+.coffee-topping-drizzle {
+  position: absolute;
+  top: 8px;
+  left: 15%;
+  right: 15%;
+  height: 10px;
+  background: #C59B27;
+  border-radius: 10px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+/* Cocoa / Cinnamon / Gold Dusting */
+.coffee-topping-dust {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Ice Cubes Layer */
+.ice-cubes-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2.5rem 0.75rem 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.ice-cube {
+  width: 26px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12), inset 0 0 6px rgba(255,255,255,0.8);
+  backdrop-filter: blur(2px);
+}
+
+.ice-1 { transform: rotate(18deg); }
+.ice-2 { transform: rotate(-22deg); margin-top: 15px; }
+.ice-3 { transform: rotate(35deg); }
+.ice-4 { transform: rotate(-12deg); margin-top: -10px; }
+
+/* Visual Plate Canvas Top-Down View */
+.plate-canvas-wrapper {
+  width: 340px;
+  height: 340px;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, #241D17 35%, #181411 75%, #100D0B 100%);
+  border: 10px solid #3E3227;
+  box-shadow: inset 0 0 35px rgba(0,0,0,0.85), 0 20px 45px rgba(0,0,0,0.6);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .plate-canvas-wrapper {
+    width: 380px;
+    height: 380px;
+  }
+}
+
+.plate-item-slot {
+  position: absolute;
+  padding: 0.5rem 0.9rem;
+  background: #241E19;
+  border: 1.5px solid var(--accent-gold);
+  border-radius: 9999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #F8F2EC;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  max-width: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 5;
+}
+
+.plate-item-slot:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(214, 168, 56, 0.4);
+}
+
+.slot-main {
+  top: 24%;
+  left: 32%;
+  transform: translate(-50%, -50%);
+  background: #2D2218;
+  border-color: #E5B744;
+  color: #FDF3E3;
+}
+.slot-side {
+  top: 28%;
+  right: 22%;
+  transform: translate(50%, -50%);
+  background: #26201B;
+  border-color: #C59B27;
+  color: #FDF3E3;
+}
+.slot-salad {
+  bottom: 28%;
+  left: 28%;
+  transform: translate(-50%, 50%);
+  background: #142817;
+  border-color: #22C55E;
+  color: #86EFAC;
+}
+.slot-sauce {
+  bottom: 24%;
+  right: 32%;
+  transform: translate(50%, 50%);
+  background: #331515;
+  border-color: #EF4444;
+  color: #FCA5A5;
+}
+.slot-drink {
+  top: -12px;
+  right: -12px;
+  background: #152238;
+  color: #BAE6FD;
+  border-color: #38BDF8;
+}
+.slot-dessert {
+  bottom: -12px;
+  left: -12px;
+  background: #331D2C;
+  color: #F5D0FE;
+  border-color: #D946EF;
+}
+
+.builder-step-card {
+  background: #1C1814;
+  border: 1px solid var(--border-warm);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  color: #F6EFE9;
+}
+
+.builder-option-pill {
+  padding: 0.55rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-warm);
+  background: #241E19;
+  color: #D8CCC0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.builder-option-pill:hover {
+  border-color: var(--accent-gold);
+  background: #332A22;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.builder-option-pill.selected {
+  border-color: #D6A838;
+  background: #3D2A14;
+  color: #FDF4D4;
+  box-shadow: 0 4px 14px rgba(214, 168, 56, 0.25);
+}
+
+.builder-option-pill.selected span.badge-price {
+  color: #FDE68A;
+}
+
+/* Meal Bowl Visualizer */
+.meal-bowl-viewport {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.meal-bowl-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 45% 45%, #26201B 0%, #1A1511 65%, #110E0B 100%);
+  border: 8px solid #3E3227;
+  box-shadow: inset 0 10px 30px rgba(0,0,0,0.8), 0 20px 45px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.meal-layer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  margin: 0.2rem 0;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  animation: fadeInPop 0.3s ease forwards;
+}
+
+@keyframes fadeInPop {
+  0% { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.meal-badge-base {
+  background: #2D2216;
+  color: #FCE49C;
+  border: 1px solid #5C4524;
+}
+
+.meal-badge-protein {
+  background: #351818;
+  color: #FCA5A5;
+  border: 1px solid #6E2626;
+}
+
+.meal-badge-sauce {
+  background: #361F12;
+  color: #FDBA74;
+  border: 1px solid #7C2D12;
+}
+
+.meal-badge-veggie {
+  background: #142817;
+  color: #86EFAC;
+  border: 1px solid #245431;
+  font-size: 0.68rem;
+  padding: 0.25rem 0.55rem;
+}
+
+.meal-badge-extra {
+  background: #2C1838;
+  color: #E9D5FF;
+  border: 1px solid #581C87;
+  font-size: 0.68rem;
+  padding: 0.25rem 0.55rem;
+}
+
+/* Dark Mode Builder Overrides */
+html.dark .plate-canvas-surface {
+  background: radial-gradient(circle, #2A241F 0%, #1A1613 70%);
+  border-color: #3B332B;
+  box-shadow: inset 0 4px 20px rgba(0,0,0,0.6);
+}
+
+html.dark .plate-rim {
+  border-color: #4A3E34;
+  background: radial-gradient(circle, #241E19 0%, #1C1815 100%);
+}
+
+html.dark .plate-center-well {
+  background: #181512;
+  border-color: #3B332B;
+}
+
+html.dark .coffee-cup-viewport {
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+}
+
+
