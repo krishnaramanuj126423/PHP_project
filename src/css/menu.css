@@ -1,0 +1,158 @@
+/* Digital Cafe Menu Dark Styling */
+.category-pill {
+  padding: 0.55rem 1.15rem;
+  border-radius: 9999px;
+  background: #241F1A;
+  color: #D8CCC0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid #3D342C;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.category-pill:hover {
+  background: #332A24;
+  border-color: #D6A838;
+  color: #FFFFFF;
+}
+
+.category-pill.active {
+  background: #D6A838 !important;
+  color: #12100E !important;
+  border-color: #D6A838 !important;
+  box-shadow: 0 4px 14px rgba(214, 168, 56, 0.35);
+}
+
+.diet-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.diet-veg {
+  background: #142817;
+  color: #86EFAC;
+  border: 1px solid #245431;
+}
+
+.diet-vegan {
+  background: #102738;
+  color: #7DD3FC;
+  border: 1px solid #1E4E6E;
+}
+
+.spice-indicator {
+  color: #F87171;
+  font-size: 0.8rem;
+  display: inline-flex;
+  gap: 2px;
+}
+
+.allergen-badge {
+  background: #241E19;
+  color: #E8DACB;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid #3D342C;
+}
+
+/* Modal Overlay & Box */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-container {
+  background: #1C1814;
+  color: #F6EFE9;
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  border: 1px solid #3D342C;
+  transform: translateY(16px) scale(0.98);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.open .modal-container {
+  transform: translateY(0) scale(1);
+}
+
+/* Customization Modal Option Buttons */
+.modal-opt-btn {
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.75rem;
+  border: 1px solid #3D342C;
+  background: #241F1A;
+  color: #E8DACB;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.modal-opt-btn:hover {
+  border-color: #D6A838;
+  background: #332A24;
+}
+
+.modal-opt-btn.active {
+  background: #D6A838 !important;
+  color: #12100E !important;
+  border-color: #D6A838 !important;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(214, 168, 56, 0.3);
+}
+
+.modal-addon-btn {
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.75rem;
+  border: 1px solid #3D342C;
+  background: #241F1A;
+  color: #E8DACB;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.modal-addon-btn:hover {
+  border-color: #D6A838;
+  background: #332A24;
+}
+
+.modal-addon-btn.selected {
+  background: #382A18 !important;
+  border-color: #D6A838 !important;
+  color: #FCE49C !important;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px #D6A838;
+}
