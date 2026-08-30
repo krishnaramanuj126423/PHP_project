@@ -1,0 +1,129 @@
+/* Antiquity Roastery Hero & Editorial Dark Visuals */
+.hero-section {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 75% 30%, #241D17 0%, #171310 45%, #100E0C 85%);
+  padding-top: 6.5rem;
+  padding-bottom: 4rem;
+  overflow: hidden;
+  border-bottom: 1px solid #2B231B;
+}
+
+.editorial-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.15rem;
+  background: rgba(214, 168, 56, 0.15);
+  color: #F5D061;
+  border: 1px solid rgba(214, 168, 56, 0.4);
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Floating Coffee Steam Animation */
+.steam-container {
+  position: absolute;
+  top: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.steam-particle {
+  width: 6px;
+  height: 35px;
+  background: linear-gradient(to top, rgba(245, 208, 97, 0.6), transparent);
+  border-radius: 10px;
+  filter: blur(3.5px);
+  animation: steamRise 3s infinite ease-in-out;
+}
+
+.steam-particle:nth-child(2) {
+  animation-delay: 0.8s;
+  height: 45px;
+}
+.steam-particle:nth-child(3) {
+  animation-delay: 1.5s;
+  height: 30px;
+}
+
+@keyframes steamRise {
+  0% {
+    transform: translateY(10px) scaleX(1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translateY(-38px) scaleX(2.2);
+    opacity: 0;
+  }
+}
+
+/* Section Title Editorial Style */
+.section-title {
+  font-family: var(--font-heading, 'Cormorant Garamond', serif);
+  font-size: 2.75rem;
+  font-weight: 600;
+  color: #F6EFE9;
+  line-height: 1.15;
+}
+
+.section-subtitle {
+  color: #E5B744;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Hero Parallax Image Wrapper */
+.hero-image-wrapper {
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  border: 1px solid #362E27;
+}
+
+.hero-image-wrapper img {
+  transition: transform 0.8s ease;
+}
+
+.hero-image-wrapper:hover img {
+  transform: scale(1.04);
+}
+
+/* Value Ribbon / Ticker */
+.value-ribbon {
+  background: #181410;
+  color: #F8F2DF;
+  padding: 0.85rem 1rem;
+  border-top: 1px solid rgba(214, 168, 56, 0.25);
+  border-bottom: 1px solid rgba(214, 168, 56, 0.25);
+}
+
+.feature-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.95rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #F4ECE3;
+  white-space: nowrap;
+}
